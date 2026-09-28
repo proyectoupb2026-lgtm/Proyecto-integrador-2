@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+  <!-- Alas -->
+  <ellipse cx="40" cy="30" rx="15" ry="20" fill="#aee2ff" opacity="0.7" transform="rotate(-30 40 30)" />
+  <ellipse cx="60" cy="30" rx="15" ry="20" fill="#aee2ff" opacity="0.7" transform="rotate(30 60 30)" />
+  
+  <!-- Cuerpo (rayas) -->
+  <ellipse cx="50" cy="55" rx="25" ry="20" fill="#ffd700" />
+  <path d="M 30,50 Q 50,70 70,50" stroke="#000000" stroke-width="6" fill="none" />
+  <path d="M 27,60 Q 50,80 73,60" stroke="#000000" stroke-width="6" fill="none" />
+  
+  <!-- Cabeza -->
+  <circle cx="25" cy="45" r="12" fill="#ffd700" />
+  
+  <!-- Ojo -->
+  <circle cx="20" cy="42" r="2" fill="#000000" />
+  
+  <!-- Antena -->
+  <path d="M 20,35 Q 15,25 25,20" stroke="#000000" stroke-width="2" fill="none" />
+  <circle cx="25" cy="20" r="2" fill="#000000" />
+  
+  <!-- Aguijón -->
+  <polygon points="73,55 85,58 71,61" fill="#000000" />
+</svg>
