@@ -1,0 +1,22 @@
+graph BT
+    classDef main fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef cause fill:#ffcccc,stroke:#333;
+    classDef effect fill:#e6ccff,stroke:#333;
+
+    %% Causas (Raíces)
+    C1a[No considerar la variabilidad espacio-temporal de la demanda]:::cause --> C1
+    C2a[Falta de planificación basada en cobertura futura y tiempo de viaje dinámico]:::cause --> C2
+    C3a[Patrones cambiantes de velocidad causados por congestión en horas pico]:::cause --> C3
+    
+    C1[Esquemas de despacho estático reactivo y asignación a la unidad más cercana]:::cause --> P
+    C2[Bases de ambulancias ubicadas de forma fija en centros hospitalarios]:::cause --> P
+    C3[Expansión urbana y congestión vehicular en arterias principales]:::cause --> P
+    C4[Escasez crítica de vehículos de atención prehospitalaria]:::cause --> P
+
+    %% Problema Central
+    P{Elevados tiempos de respuesta en la atención<br/>prehospitalaria de urgencias en Montería}:::main
+
+    %% Efectos (Ramas)
+    P --> E1[Demoras críticas en la llegada de vehículos a los lugares de siniestro]:::effect
+    E1 --> E2[Tiempos de respuesta superan los 18 minutos en zonas periféricas y puntos críticos]:::effect
+    E2 --> E3[Disminución de probabilidad de supervivencia y aumento de mortalidad prevenible / secuelas severas]:::effect

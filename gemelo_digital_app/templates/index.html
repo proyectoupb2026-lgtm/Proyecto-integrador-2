@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemelo Digital - Asignación de Ambulancias</title>
+    <meta name="description" content="Gemelo digital para la localización-asignación y reubicación de ambulancias en Montería.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>🚑 Gemelo Digital Operativo</h1>
+            <p>Optimización MILP y Simulación de Eventos Discretos para Despacho de Ambulancias</p>
+        </header>
+        
+        <main class="app-main">
+            <section class="config-panel">
+                <h2>Parámetros Globales</h2>
+                
+                <div class="input-group">
+                    <label for="num_nodes">Nodos de Demanda (Zonas):</label>
+                    <input type="number" id="num_nodes" value="3" min="1" max="50">
+                </div>
+                
+                <div class="input-group">
+                    <label for="num_bases">Bases Candidatas:</label>
+                    <input type="number" id="num_bases" value="2" min="1" max="20">
+                </div>
+                
+                <div class="input-group">
+                    <label for="num_ambulances">Flota Total de Ambulancias ($p$):</label>
+                    <input type="number" id="num_ambulances" value="4" min="1">
+                </div>
+                
+                <div class="input-group">
+                    <label for="max_time">Tiempo de Respuesta Máximo ($T_{max}$ min):</label>
+                    <input type="number" id="max_time" value="10.0" step="0.5">
+                </div>
+                
+                <div class="input-group">
+                    <label for="alpha">Penalización por Retraso ($\alpha$):</label>
+                    <input type="number" id="alpha" value="0.5" step="0.1">
+                </div>
+                
+                <button id="btn-generate-tables" class="btn-secondary">Generar Matrices</button>
+            </section>
+            
+            <section class="matrices-panel" id="matrices-panel" style="display:none;">
+                <h2>Configuración de Nodos y Bases</h2>
+                
+                <div class="matrix-container">
+                    <h3>Demanda por Nodo (Incidentes / mes)</h3>
+                    <div id="demands-container"></div>
+                </div>
+                
+                <div class="matrix-container">
+                    <h3>Capacidad Máxima por Base (Ambulancias)</h3>
+                    <div id="capacities-container"></div>
+                </div>
+                
+                <div class="matrix-container">
+                    <h3>Matriz de Tiempo de Viaje (Minutos)</h3>
+                    <div class="table-wrapper">
+                        <table id="travel-times-table">
+                            <thead>
+                                <tr id="travel-times-head"></tr>
+                            </thead>
+                            <tbody id="travel-times-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <button id="btn-simulate" class="btn-primary">Ejecutar Simulación & Optimización</button>
+            </section>
+            
+            <section class="results-panel" id="results-panel" style="display:none;">
+                <h2>Resultados del Gemelo Digital</h2>
+                
+                <div class="loader" id="loader" style="display:none;"></div>
+                
+                <div id="results-content">
+                    <div class="kpi-cards">
+                        <div class="kpi-card">
+                            <h4>Tiempo Medio de Respuesta</h4>
+                            <div class="kpi-value" id="kpi-avg-time">-- min</div>
+                        </div>
+                        <div class="kpi-card">
+                            <h4>Cobertura ($t \le T_{max}$)</h4>
+                            <div class="kpi-value" id="kpi-coverage">-- %</div>
+                        </div>
+                        <div class="kpi-card">
+                            <h4>Función Objetivo MILP</h4>
+                            <div class="kpi-value" id="kpi-objective">--</div>
+                        </div>
+                    </div>
+                    
+                    <div class="allocation-results">
+                        <h3>Asignación Óptima de Ambulancias</h3>
+                        <ul id="allocation-list"></ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

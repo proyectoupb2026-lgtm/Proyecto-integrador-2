@@ -1,0 +1,38 @@
+erDiagram
+    %% Entidades y Relaciones (Cardinalidad)
+    BASE_AMBULANCIA ||--o{ AMBULANCIA : "aloja y despacha"
+    SINIESTRO ||--o{ DESPACHO : "requiere atención"
+    AMBULANCIA ||--o{ DESPACHO : "atiende"
+
+    %% Definición de la estructura de tablas (Atributos)
+    BASE_AMBULANCIA {
+        int id_base PK "Identificador único de la base candidata"
+        string nombre_ubicacion "Ej. Centro Hospitalario"
+        float latitud "Coordenada espacial"
+        float longitud "Coordenada espacial"
+        int capacidad_maxima "C_j: Capacidad física de la base"
+    }
+    
+    AMBULANCIA {
+        int id_ambulancia PK "Identificador único del vehículo (k)"
+        int id_base_actual FK "Clave foránea de la base donde está asignada"
+        string estado "Disponible, En Ruta, o Asignada"
+    }
+
+    SINIESTRO {
+        int id_siniestro PK "Identificador de los 338 incidentes históricos"
+        datetime fecha_hora "Para modelar la demanda Poisson"
+        float latitud "Coordenada del evento"
+        float longitud "Coordenada del evento"
+        string nivel_severidad "Víctima mortal o Herido grave"
+        string zona_critica "Ej. Glorieta de Mocarí"
+    }
+
+    DESPACHO {
+        int id_despacho PK "Registro de la simulación del Gemelo Digital"
+        int id_siniestro FK "Clave foránea del siniestro atendido"
+        int id_ambulancia FK "Clave foránea de la unidad que respondió"
+        float tiempo_viaje_minutos "T_ij extraído de OSMnx"
+        float tiempo_respuesta_total "T_resp"
+        boolean cobertura_exitosa "t <= T_max (10 minutos)"
+    }

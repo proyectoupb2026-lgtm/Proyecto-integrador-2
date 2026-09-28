@@ -1,0 +1,22 @@
+graph BT
+    classDef main fill:#9cf,stroke:#333,stroke-width:2px;
+    classDef medio fill:#ccffcc,stroke:#333;
+    classDef fin fill:#cce5ff,stroke:#333;
+
+    %% Medios (Raíces)
+    M1a[Considerar la variabilidad espacio-temporal de la demanda]:::medio --> M1
+    M2a[Planificación cuantitativa basada en cobertura futura y tiempos dinámicos]:::medio --> M2
+    M3a[Adaptación a los patrones cambiantes de velocidad comercial]:::medio --> M3
+    
+    M1[Sustituir el despacho reactivo por esquemas de asignación dinámico-estocásticos]:::medio --> O
+    M2[Determinar la localización óptima y reubicación preventiva de ambulancias bases]:::medio --> O
+    M3[Mitigar el impacto de la expansión urbana y congestión vehicular]:::medio --> O
+    M4[Optimizar el uso de la flota disponible de vehículos de atención]:::medio --> O
+
+    %% Objetivo Central
+    O{Reducir los tiempos de respuesta en la atención<br/>prehospitalaria de urgencias en Montería}:::main
+
+    %% Fines (Ramas)
+    O --> F1[Llegada oportuna de vehículos de emergencia a los lugares de siniestro]:::fin
+    F1 --> F2[Tiempos de respuesta dentro del estándar de 8-10 min y aumento de cobertura]:::fin
+    F2 --> F3[Incremento de probabilidad de supervivencia y mitigación de mortalidad prevenible]:::fin

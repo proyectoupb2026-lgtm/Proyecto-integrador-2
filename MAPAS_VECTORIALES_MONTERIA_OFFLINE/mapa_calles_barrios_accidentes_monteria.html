@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ca1a53a2480d873942be9489dadaf6af {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_ca1a53a2480d873942be9489dadaf6af" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ca1a53a2480d873942be9489dadaf6af = L.map(
+                "map_ca1a53a2480d873942be9489dadaf6af",
+                {
+                    center: [8.755, -75.875],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5baabc622db47bd899a87aab960f90c8 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5baabc622db47bd899a87aab960f90c8.addTo(map_ca1a53a2480d873942be9489dadaf6af);
+        
+    
+        function geo_json_0d66c06ef52ffed70a882d957db01497_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#2E7D32", "fillColor": "#E8F5E9", "fillOpacity": 0.08, "weight": 2.5};
+            }
+        }
+
+        function geo_json_0d66c06ef52ffed70a882d957db01497_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_0d66c06ef52ffed70a882d957db01497 = L.geoJson(null, {
+                onEachFeature: geo_json_0d66c06ef52ffed70a882d957db01497_onEachFeature,
+            
+                style: geo_json_0d66c06ef52ffed70a882d957db01497_styler,
+            ...{
+}
+        });
+
+        function geo_json_0d66c06ef52ffed70a882d957db01497_add (data) {
+            geo_json_0d66c06ef52ffed70a882d957db01497
+                .addData(data);
+        }
+            geo_json_0d66c06ef52ffed70a882d957db01497_add({"bbox": [-75.9171153, 8.7127269, -75.837121, 8.8117329], "features": [{"bbox": [-75.9171153, 8.7127269, -75.837121, 8.8117329], "geometry": {"coordinates": [[[[-75.9171153, 8.7531405], [-75.9131026, 8.7490686], [-75.9106457, 8.7465554], [-75.9075666, 8.7435757], [-75.9059143, 8.7422078], [-75.9065581, 8.7409671], [-75.9068156, 8.7398006], [-75.9021378, 8.7410519], [-75.902129, 8.7410397], [-75.9009576, 8.7373192], [-75.8995199, 8.7323988], [-75.8990479, 8.7307232], [-75.8986402, 8.7304475], [-75.8979321, 8.730596], [-75.8975887, 8.7308611], [-75.8972025, 8.7308929], [-75.8969557, 8.7308929], [-75.8966875, 8.7309883], [-75.8965159, 8.7312429], [-75.8965373, 8.7314337], [-75.89643, 8.7316989], [-75.8961296, 8.7318685], [-75.8960672, 8.7318947], [-75.8959258, 8.7319534], [-75.8957648, 8.7320912], [-75.8956853, 8.7322289], [-75.895679, 8.7322397], [-75.8956683, 8.7324412], [-75.8956468, 8.7327487], [-75.8954537, 8.7326214], [-75.8953142, 8.7325578], [-75.8947671, 8.732526], [-75.8943808, 8.7326426], [-75.894354, 8.7324783], [-75.8944291, 8.7322503], [-75.8944935, 8.7321601], [-75.8946544, 8.7320594], [-75.8948475, 8.7319427], [-75.8949709, 8.7318685], [-75.8950728, 8.731667], [-75.8951426, 8.7315292], [-75.8951157, 8.7313489], [-75.895105, 8.7312004], [-75.8951747, 8.7309247], [-75.895105, 8.7307338], [-75.8950406, 8.7305217], [-75.8952177, 8.7302991], [-75.8953518, 8.7301135], [-75.8953893, 8.730018], [-75.8953464, 8.7297582], [-75.8952767, 8.7296946], [-75.8951318, 8.7294666], [-75.8951426, 8.7293234], [-75.8952338, 8.7292227], [-75.8954269, 8.7291591], [-75.8956951, 8.729175], [-75.8959043, 8.7292386], [-75.8960223, 8.7292174], [-75.8961672, 8.729106], [-75.8963871, 8.7290583], [-75.8965373, 8.7290053], [-75.8968002, 8.7289152], [-75.8970791, 8.7288462], [-75.8972186, 8.7287349], [-75.8973849, 8.7284963], [-75.8974439, 8.7283372], [-75.8974546, 8.7281728], [-75.8975136, 8.7280297], [-75.8976477, 8.7279501], [-75.8977765, 8.7279024], [-75.8979482, 8.7279554], [-75.8980984, 8.72786], [-75.8981788, 8.7277327], [-75.8983988, 8.7277115], [-75.8985758, 8.7277433], [-75.8987206, 8.7277062], [-75.8987528, 8.727579], [-75.8987367, 8.7274252], [-75.8984578, 8.7272555], [-75.897975, 8.7271813], [-75.8974064, 8.7270222], [-75.8968485, 8.7271601], [-75.8964193, 8.7272874], [-75.8958399, 8.7270753], [-75.8953571, 8.7268632], [-75.8952499, 8.7245832], [-75.8934045, 8.7233106], [-75.8931041, 8.7235333], [-75.8929539, 8.7233848], [-75.8922136, 8.723984], [-75.8918917, 8.7236234], [-75.8913285, 8.7230773], [-75.8907974, 8.7226849], [-75.8905453, 8.722441], [-75.890218, 8.7219903], [-75.8899498, 8.7214495], [-75.8897942, 8.7209457], [-75.8896869, 8.7204526], [-75.8896816, 8.7199966], [-75.8897781, 8.7192172], [-75.8898318, 8.7186074], [-75.8897996, 8.7181885], [-75.8896977, 8.7174514], [-75.8896118, 8.7169795], [-75.8913499, 8.7170591], [-75.8943111, 8.7171439], [-75.8977543, 8.7173035], [-75.8977117, 8.7148035], [-75.8969826, 8.7148161], [-75.8966768, 8.7149964], [-75.8963013, 8.7151555], [-75.895797, 8.7152668], [-75.8950514, 8.7153252], [-75.8948207, 8.7142116], [-75.893265, 8.7134746], [-75.8912909, 8.7127375], [-75.8908618, 8.7133526], [-75.8903682, 8.7141904], [-75.8898532, 8.7149699], [-75.8877826, 8.7139412], [-75.8865166, 8.7127269], [-75.8847892, 8.7143707], [-75.882563, 8.7163697], [-75.8817476, 8.7172659], [-75.881061, 8.7180983], [-75.8807015, 8.7187664], [-75.879398, 8.7208821], [-75.8791566, 8.7212268], [-75.8790278, 8.7213858], [-75.8786953, 8.7214866], [-75.8782393, 8.7216085], [-75.8779979, 8.721582], [-75.8778048, 8.7215343], [-75.8776063, 8.7215661], [-75.876984, 8.7218949], [-75.8765924, 8.7220805], [-75.8763135, 8.7216244], [-75.8757663, 8.7202352], [-75.8751977, 8.7192172], [-75.8712086, 8.7189921], [-75.8697474, 8.7189096], [-75.8697045, 8.7210942], [-75.866518, 8.7231197], [-75.8647585, 8.7242332], [-75.8638144, 8.7245089], [-75.8625484, 8.7250604], [-75.8616364, 8.7255482], [-75.8608532, 8.72593], [-75.859952, 8.726439], [-75.8591902, 8.7269268], [-75.860349, 8.7277964], [-75.8590722, 8.7296734], [-75.857935, 8.7308505], [-75.8553386, 8.7327699], [-75.8556175, 8.7331198], [-75.8541155, 8.7352301], [-75.8531284, 8.7365345], [-75.8522809, 8.7379342], [-75.8519912, 8.7392704], [-75.8519912, 8.7403944], [-75.8524418, 8.7417942], [-75.8530104, 8.7426319], [-75.8556497, 8.7456965], [-75.8550918, 8.7482521], [-75.8559179, 8.7489414], [-75.8579564, 8.750182], [-75.8595014, 8.7510409], [-75.8596623, 8.7494716], [-75.8625484, 8.7503517], [-75.862248, 8.7506804], [-75.8619368, 8.751094], [-75.861615, 8.7513909], [-75.8609498, 8.751762], [-75.8605313, 8.7521543], [-75.8602417, 8.7526633], [-75.8600271, 8.7531299], [-75.8596301, 8.7536071], [-75.8590937, 8.7540312], [-75.8582783, 8.7544766], [-75.8572912, 8.755028], [-75.8621299, 8.7575941], [-75.859952, 8.7596724], [-75.8595228, 8.7601178], [-75.8594573, 8.7602442], [-75.8593083, 8.7605313], [-75.858932, 8.7616463], [-75.8588684, 8.7618674], [-75.85742, 8.7661088], [-75.8566368, 8.7684098], [-75.8564866, 8.7687067], [-75.856154, 8.7690248], [-75.8533108, 8.7715166], [-75.8510767, 8.7734536], [-75.8507543, 8.773733], [-75.8496416, 8.7746976], [-75.8455861, 8.7785677], [-75.841713, 8.7820032], [-75.837121, 8.7859687], [-75.8389235, 8.787135], [-75.8432579, 8.7899766], [-75.8438802, 8.7893298], [-75.8454641, 8.7903689], [-75.8464337, 8.791005], [-75.8419168, 8.7930938], [-75.841552, 8.7938466], [-75.838151, 8.7940268], [-75.839417, 8.7959141], [-75.841316, 8.7987821], [-75.8421895, 8.800049], [-75.841037, 8.8004944], [-75.8406293, 8.8008443], [-75.8402968, 8.8014486], [-75.8401895, 8.8017985], [-75.8408439, 8.802318], [-75.8406508, 8.8028482], [-75.8402217, 8.8027634], [-75.8386445, 8.8049581], [-75.8382154, 8.8066862], [-75.8392561, 8.8063576], [-75.8396101, 8.8073436], [-75.8393097, 8.8082342], [-75.8395405, 8.8083132], [-75.8420348, 8.8091672], [-75.8435369, 8.8107787], [-75.8446527, 8.8100578], [-75.8493734, 8.8114043], [-75.8498776, 8.8100366], [-75.8546305, 8.8117329], [-75.8549094, 8.8108423], [-75.8588898, 8.8115633], [-75.8596945, 8.8102062], [-75.8601987, 8.8092308], [-75.8616312, 8.809296], [-75.8618295, 8.809305], [-75.8617652, 8.8085522], [-75.8615935, 8.8078631], [-75.8610571, 8.8068029], [-75.8603275, 8.8055412], [-75.8592653, 8.803866], [-75.8590722, 8.8032723], [-75.8588147, 8.8022756], [-75.8586645, 8.8015017], [-75.8588576, 8.8005262], [-75.8591151, 8.7998583], [-75.8595979, 8.7991161], [-75.8610785, 8.79725], [-75.8619905, 8.7960943], [-75.8627663, 8.7951404], [-75.8638573, 8.7930726], [-75.8648229, 8.7913973], [-75.8658529, 8.7896585], [-75.8665824, 8.7887466], [-75.8680845, 8.7877924], [-75.8697582, 8.7868169], [-75.8706915, 8.7860535], [-75.8716571, 8.7852795], [-75.8720863, 8.7847069], [-75.8723223, 8.7841662], [-75.8725369, 8.78353], [-75.8725906, 8.7826499], [-75.8725262, 8.7818123], [-75.8722794, 8.7806672], [-75.8718288, 8.7793948], [-75.8710134, 8.7775604], [-75.8703268, 8.7759169], [-75.8698118, 8.774284], [-75.8694685, 8.7728738], [-75.8692861, 8.7719725], [-75.8692324, 8.770891], [-75.8692968, 8.769714], [-75.8694309, 8.7692209], [-75.8695972, 8.7687968], [-75.8702463, 8.7685264], [-75.8709169, 8.768325], [-75.8720756, 8.7680493], [-75.8731485, 8.7680705], [-75.8739853, 8.7686007], [-75.8747149, 8.7693005], [-75.8756376, 8.7702548], [-75.8767104, 8.7710394], [-75.8774615, 8.7714212], [-75.87847, 8.7718241], [-75.8792854, 8.7719301], [-75.8798943, 8.7718789], [-75.8800256, 8.7725239], [-75.8807659, 8.7734358], [-75.8812702, 8.7742946], [-75.8820641, 8.7769773], [-75.8824182, 8.779363], [-75.8830297, 8.783689], [-75.8851218, 8.7827878], [-75.8857656, 8.7833285], [-75.8883619, 8.7795326], [-75.8905828, 8.7765849], [-75.8902288, 8.7756307], [-75.8900142, 8.7747506], [-75.8899605, 8.7739341], [-75.8900571, 8.7730435], [-75.8903253, 8.7722164], [-75.8910442, 8.7704774], [-75.8918019, 8.7686688], [-75.894333, 8.7710119], [-75.8961725, 8.7727148], [-75.9011507, 8.7690884], [-75.9047985, 8.7650379], [-75.9092188, 8.7598845], [-75.9120083, 8.7571276], [-75.9171153, 8.7531405]]], [[[-75.8495021, 8.7515181], [-75.8489764, 8.7505001], [-75.8486974, 8.7502032], [-75.8483112, 8.7500442], [-75.8470988, 8.7499699], [-75.8469915, 8.7495564], [-75.8454681, 8.7497579], [-75.8454681, 8.7499593], [-75.843848, 8.7497048], [-75.8435047, 8.7508713], [-75.8430648, 8.7507758], [-75.8427751, 8.7508183], [-75.841831, 8.7504895], [-75.8411443, 8.7504047], [-75.839932, 8.7506486], [-75.839771, 8.7516878], [-75.8407259, 8.7517938], [-75.8408761, 8.7519529], [-75.8415091, 8.7519317], [-75.8407903, 8.7540418], [-75.8461547, 8.7551552], [-75.847646, 8.7544024], [-75.8485258, 8.753957], [-75.8470774, 8.7528224], [-75.8467662, 8.7529178], [-75.8463585, 8.7530663], [-75.8456719, 8.7530027], [-75.8453393, 8.752833], [-75.8477748, 8.7504683], [-75.8484829, 8.7508819], [-75.8490515, 8.7513166], [-75.8495021, 8.7515181]]]], "type": "MultiPolygon"}, "id": "0", "properties": {"addresstype": "city", "bbox_east": -75.837121, "bbox_north": 8.8117329, "bbox_south": 8.7127269, "bbox_west": -75.9171153, "class": "boundary", "display_name": "Monter\u00eda, Centro, C\u00f3rdoba, RAP Caribe, Colombia", "importance": 0.48683479237167826, "lat": 8.7509361, "lon": -75.8786806, "name": "Monter\u00eda", "osm_id": 14702718, "osm_type": "relation", "place_id": 307583954, "place_rank": 14, "type": "administrative"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_0d66c06ef52ffed70a882d957db01497.addTo(map_ca1a53a2480d873942be9489dadaf6af);
+        
+    
+            var feature_group_98d6e3007cd30b8a9a9ef78a2afa978e = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_2f24d6bd7da322647e5e80f1458c207c = L.polyline(
+                [[8.73, -75.865], [8.741, -75.867], [8.752, -75.869], [8.763, -75.8675], [8.775, -75.862], [8.788, -75.857], [8.802, -75.851]],
+                {"bubblingMouseEvents": true, "color": "#B71C1C", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#B71C1C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(feature_group_98d6e3007cd30b8a9a9ef78a2afa978e);
+        
+    
+        var popup_6b270c2cd51a82e10aa2a8f3c642cff2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a54ba28828cebbce19f090d95239cdff = $(`<div id="html_a54ba28828cebbce19f090d95239cdff" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 260px;'>         <b style='color: #B71C1C; font-size: 14px;'>Avenida Circunvalar (Carrera 14)</b><br>         <b>Peligro:</b> NIVEL 1 - CRÍTICO<br>         <b>Tramo:</b> Desde Glorieta de las Vacas hasta Glorieta de Mocarí (8.5 km)<br>         <b>Causas Principales:</b> Velocidad excesiva, cruces sin semáforo (Calles 29, 41, 44, 68), alta circulación de motos.<br>         <b>Coordenadas Aprox:</b> Lat: 8.76443 | Lon: -75.86264     </div>     </div>`)[0];
+                popup_6b270c2cd51a82e10aa2a8f3c642cff2.setContent(html_a54ba28828cebbce19f090d95239cdff);
+            
+        
+
+        poly_line_2f24d6bd7da322647e5e80f1458c207c.bindPopup(popup_6b270c2cd51a82e10aa2a8f3c642cff2)
+        ;
+
+        
+    
+    
+            poly_line_2f24d6bd7da322647e5e80f1458c207c.bindTooltip(
+                `<div>
+                     
+    <div style='font-family: Arial; font-size: 12px; width: 260px;'>
+        <b style='color: #B71C1C; font-size: 14px;'>Avenida Circunvalar (Carrera 14)</b><br>
+        <b>Peligro:</b> NIVEL 1 - CRÍTICO<br>
+        <b>Tramo:</b> Desde Glorieta de las Vacas hasta Glorieta de Mocarí (8.5 km)<br>
+        <b>Causas Principales:</b> Velocidad excesiva, cruces sin semáforo (Calles 29, 41, 44, 68), alta circulación de motos.<br>
+        <b>Coordenadas Aprox:</b> Lat: 8.76443 | Lon: -75.86264
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_1261627e3f0f8b70988d04414bd50969 = L.polyline(
+                [[8.7625, -75.887], [8.761, -75.882], [8.76, -75.875], [8.758, -75.868], [8.754, -75.854]],
+                {"bubblingMouseEvents": true, "color": "#D50000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#D50000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(feature_group_98d6e3007cd30b8a9a9ef78a2afa978e);
+        
+    
+        var popup_a5cd0b44082e7711192486e2e6a7d9d8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_60a808dad1c94cbae4f36f05a873fcb2 = $(`<div id="html_60a808dad1c94cbae4f36f05a873fcb2" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 260px;'>         <b style='color: #D50000; font-size: 14px;'>Calle 41 (Eje Transversal)</b><br>         <b>Peligro:</b> NIVEL 1 - CRÍTICO<br>         <b>Tramo:</b> Desde Puente Segundo Centenario hasta Terminal de Transportes<br>         <b>Causas Principales:</b> Congestión mixta, transporte intermunicipal, embudos en el puente y semáforos saturados.<br>         <b>Coordenadas Aprox:</b> Lat: 8.75910 | Lon: -75.87320     </div>     </div>`)[0];
+                popup_a5cd0b44082e7711192486e2e6a7d9d8.setContent(html_60a808dad1c94cbae4f36f05a873fcb2);
+            
+        
+
+        poly_line_1261627e3f0f8b70988d04414bd50969.bindPopup(popup_a5cd0b44082e7711192486e2e6a7d9d8)
+        ;
+
+        
+    
+    
+            poly_line_1261627e3f0f8b70988d04414bd50969.bindTooltip(
+                `<div>
+                     
+    <div style='font-family: Arial; font-size: 12px; width: 260px;'>
+        <b style='color: #D50000; font-size: 14px;'>Calle 41 (Eje Transversal)</b><br>
+        <b>Peligro:</b> NIVEL 1 - CRÍTICO<br>
+        <b>Tramo:</b> Desde Puente Segundo Centenario hasta Terminal de Transportes<br>
+        <b>Causas Principales:</b> Congestión mixta, transporte intermunicipal, embudos en el puente y semáforos saturados.<br>
+        <b>Coordenadas Aprox:</b> Lat: 8.75910 | Lon: -75.87320
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_01536062747c9a461e943f8fdb9dbb27 = L.polyline(
+                [[8.79, -75.8565], [8.802, -75.851], [8.825, -75.839], [8.845, -75.828]],
+                {"bubblingMouseEvents": true, "color": "#E53935", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#E53935", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(feature_group_98d6e3007cd30b8a9a9ef78a2afa978e);
+        
+    
+        var popup_e550f962c6d8d7dbdbdd2c874c348e3c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bfcb7d67acaac68c1fdb690cfb9e1bff = $(`<div id="html_bfcb7d67acaac68c1fdb690cfb9e1bff" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 260px;'>         <b style='color: #E53935; font-size: 14px;'>Troncal de Occidente (Vía Cereté - Mocarí)</b><br>         <b>Peligro:</b> NIVEL 1 - CRÍTICO<br>         <b>Tramo:</b> Mocarí - Universidad de Córdoba - Aeropuerto<br>         <b>Causas Principales:</b> Tráfico pesado de carga nacional, alta velocidad y cruce masivo de peatones universitarios.<br>         <b>Coordenadas Aprox:</b> Lat: 8.81550 | Lon: -75.84363     </div>     </div>`)[0];
+                popup_e550f962c6d8d7dbdbdd2c874c348e3c.setContent(html_bfcb7d67acaac68c1fdb690cfb9e1bff);
+            
+        
+
+        poly_line_01536062747c9a461e943f8fdb9dbb27.bindPopup(popup_e550f962c6d8d7dbdbdd2c874c348e3c)
+        ;
+
+        
+    
+    
+            poly_line_01536062747c9a461e943f8fdb9dbb27.bindTooltip(
+                `<div>
+                     
+    <div style='font-family: Arial; font-size: 12px; width: 260px;'>
+        <b style='color: #E53935; font-size: 14px;'>Troncal de Occidente (Vía Cereté - Mocarí)</b><br>
+        <b>Peligro:</b> NIVEL 1 - CRÍTICO<br>
+        <b>Tramo:</b> Mocarí - Universidad de Córdoba - Aeropuerto<br>
+        <b>Causas Principales:</b> Tráfico pesado de carga nacional, alta velocidad y cruce masivo de peatones universitarios.<br>
+        <b>Coordenadas Aprox:</b> Lat: 8.81550 | Lon: -75.84363
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_3e2075bbe0fcee9a476104dd43f5a8d2 = L.polyline(
+                [[8.748, -75.889], [8.755, -75.8865], [8.761, -75.882]],
+                {"bubblingMouseEvents": true, "color": "#FF6D00", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#FF6D00", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_98d6e3007cd30b8a9a9ef78a2afa978e);
+        
+    
+        var popup_c88655389d7379b5cd570de0eebf92ba = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_933a69480628f4c5cbef1b8dc51d8760 = $(`<div id="html_933a69480628f4c5cbef1b8dc51d8760" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 260px;'>         <b style='color: #FF6D00; font-size: 14px;'>Avenida Primera (Ronda del Sinú)</b><br>         <b>Peligro:</b> NIVEL 2 - ALTO<br>         <b>Tramo:</b> Carrera 1ª entre Calles 20 y 41<br>         <b>Causas Principales:</b> Transeúntes turísticos, zonas de restaurantes y colisiones moto-peatón.<br>         <b>Coordenadas Aprox:</b> Lat: 8.75467 | Lon: -75.88583     </div>     </div>`)[0];
+                popup_c88655389d7379b5cd570de0eebf92ba.setContent(html_933a69480628f4c5cbef1b8dc51d8760);
+            
+        
+
+        poly_line_3e2075bbe0fcee9a476104dd43f5a8d2.bindPopup(popup_c88655389d7379b5cd570de0eebf92ba)
+        ;
+
+        
+    
+    
+            poly_line_3e2075bbe0fcee9a476104dd43f5a8d2.bindTooltip(
+                `<div>
+                     
+    <div style='font-family: Arial; font-size: 12px; width: 260px;'>
+        <b style='color: #FF6D00; font-size: 14px;'>Avenida Primera (Ronda del Sinú)</b><br>
+        <b>Peligro:</b> NIVEL 2 - ALTO<br>
+        <b>Tramo:</b> Carrera 1ª entre Calles 20 y 41<br>
+        <b>Causas Principales:</b> Transeúntes turísticos, zonas de restaurantes y colisiones moto-peatón.<br>
+        <b>Coordenadas Aprox:</b> Lat: 8.75467 | Lon: -75.88583
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_61b7bdd23108a2f487af5b0567912bcf = L.polyline(
+                [[8.752, -75.888], [8.751, -75.878], [8.75, -75.869], [8.748, -75.856]],
+                {"bubblingMouseEvents": true, "color": "#FF3D00", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#FF3D00", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_98d6e3007cd30b8a9a9ef78a2afa978e);
+        
+    
+        var popup_2ccd84b99c2c7be615d79195f8d383aa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_611baf852ed26e674df091f684e40755 = $(`<div id="html_611baf852ed26e674df091f684e40755" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 260px;'>         <b style='color: #FF3D00; font-size: 14px;'>Calle 29 (Conector Central)</b><br>         <b>Peligro:</b> NIVEL 2 - ALTO<br>         <b>Tramo:</b> Desde Centro hacia Cantaclaro / Glorieta de la Terminal<br>         <b>Causas Principales:</b> Adelantamientos indebidos en horas pico y giros imprevistos.<br>         <b>Coordenadas Aprox:</b> Lat: 8.75025 | Lon: -75.87275     </div>     </div>`)[0];
+                popup_2ccd84b99c2c7be615d79195f8d383aa.setContent(html_611baf852ed26e674df091f684e40755);
+            
+        
+
+        poly_line_61b7bdd23108a2f487af5b0567912bcf.bindPopup(popup_2ccd84b99c2c7be615d79195f8d383aa)
+        ;
+
+        
+    
+    
+            poly_line_61b7bdd23108a2f487af5b0567912bcf.bindTooltip(
+                `<div>
+                     
+    <div style='font-family: Arial; font-size: 12px; width: 260px;'>
+        <b style='color: #FF3D00; font-size: 14px;'>Calle 29 (Conector Central)</b><br>
+        <b>Peligro:</b> NIVEL 2 - ALTO<br>
+        <b>Tramo:</b> Desde Centro hacia Cantaclaro / Glorieta de la Terminal<br>
+        <b>Causas Principales:</b> Adelantamientos indebidos en horas pico y giros imprevistos.<br>
+        <b>Coordenadas Aprox:</b> Lat: 8.75025 | Lon: -75.87275
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_0aee4e04eb554b7044fdd75ac5ee90fc = L.polyline(
+                [[8.76, -75.892], [8.753, -75.899], [8.748, -75.912], [8.742, -75.93]],
+                {"bubblingMouseEvents": true, "color": "#C62828", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#C62828", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(feature_group_98d6e3007cd30b8a9a9ef78a2afa978e);
+        
+    
+        var popup_845d25ca5b4038800696ce7ef416a630 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bcae0dab265f4ef8ede67b7e46f0be9c = $(`<div id="html_bcae0dab265f4ef8ede67b7e46f0be9c" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 260px;'>         <b style='color: #C62828; font-size: 14px;'>Vía a Arboletes (Margen Izquierda)</b><br>         <b>Peligro:</b> NIVEL 1 - CRÍTICO<br>         <b>Tramo:</b> Salida El Dorado - Santa Fe hacia canaletes/Arboletes<br>         <b>Causas Principales:</b> Falta de berma continua, iluminación deficiente nocturna y camiones ganaderos.<br>         <b>Coordenadas Aprox:</b> Lat: 8.75075 | Lon: -75.90825     </div>     </div>`)[0];
+                popup_845d25ca5b4038800696ce7ef416a630.setContent(html_bcae0dab265f4ef8ede67b7e46f0be9c);
+            
+        
+
+        poly_line_0aee4e04eb554b7044fdd75ac5ee90fc.bindPopup(popup_845d25ca5b4038800696ce7ef416a630)
+        ;
+
+        
+    
+    
+            poly_line_0aee4e04eb554b7044fdd75ac5ee90fc.bindTooltip(
+                `<div>
+                     
+    <div style='font-family: Arial; font-size: 12px; width: 260px;'>
+        <b style='color: #C62828; font-size: 14px;'>Vía a Arboletes (Margen Izquierda)</b><br>
+        <b>Peligro:</b> NIVEL 1 - CRÍTICO<br>
+        <b>Tramo:</b> Salida El Dorado - Santa Fe hacia canaletes/Arboletes<br>
+        <b>Causas Principales:</b> Falta de berma continua, iluminación deficiente nocturna y camiones ganaderos.<br>
+        <b>Coordenadas Aprox:</b> Lat: 8.75075 | Lon: -75.90825
+    </div>
+    
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_98d6e3007cd30b8a9a9ef78a2afa978e.addTo(map_ca1a53a2480d873942be9489dadaf6af);
+        
+    
+            var feature_group_17abb3e6dc30e8705ebf782e77f20d69 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_77883778f713d91490b8e19e1b1bb23c = L.circle(
+                [8.7385, -75.852],
+                {"bubblingMouseEvents": true, "color": "#E65100", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E65100", "fillOpacity": 0.22, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 750, "stroke": true, "weight": 2}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+        var popup_7c4bb4a451b3e82052dc6671554ae9dc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1a50815daa9b600a24c4432fc698ed83 = $(`<div id="html_1a50815daa9b600a24c4432fc698ed83" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 240px;'>         <h4 style='margin:0; color:#E65100;'>Barrio Cantaclaro</h4>         <b>Zona:</b> Margen Derecha (Sur-Oriente)<br>         <b>Nivel Siniestralidad:</b> <span style='color:red;'><b>Muy Alta</b></span><br>         <b>Coordenadas:</b> Lat: 8.73850 | Lon: -75.85200<br>         <p style='margin-top:5px;'>Gran flujo de motos, múltiples intersecciones sin señalizar y empalme a la vía a Planeta Rica.</p>     </div>     </div>`)[0];
+                popup_7c4bb4a451b3e82052dc6671554ae9dc.setContent(html_1a50815daa9b600a24c4432fc698ed83);
+            
+        
+
+        circle_77883778f713d91490b8e19e1b1bb23c.bindPopup(popup_7c4bb4a451b3e82052dc6671554ae9dc)
+        ;
+
+        
+    
+    
+            circle_77883778f713d91490b8e19e1b1bb23c.bindTooltip(
+                `<div>
+                     Barrio Cantaclaro (Muy Alta)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_cd4df4b80cfe46854ef563d93899a887 = L.marker(
+                [8.7385, -75.852],
+                {
+}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+            var div_icon_a1e6f35a4ba3d1d252a1497a3ee54711 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-family: Arial; font-weight: bold; font-size: 10px; color: #212121; background: rgba(255,255,255,0.85); padding: 2px 5px; border-radius: 4px; border: 1px solid #E65100; white-space: nowrap;\u0027\u003eCantaclaro\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_cd4df4b80cfe46854ef563d93899a887.setIcon(div_icon_a1e6f35a4ba3d1d252a1497a3ee54711);
+            
+    
+            var circle_b8db8cfd9e5787fcaa054923fcf2109e = L.circle(
+                [8.735, -75.876],
+                {"bubblingMouseEvents": true, "color": "#D84315", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D84315", "fillOpacity": 0.22, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 650, "stroke": true, "weight": 2}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+        var popup_01268a5b993b6fe27ebb595a2c7c287b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0eba990df09368bc6c950f32eb5b00a7 = $(`<div id="html_0eba990df09368bc6c950f32eb5b00a7" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 240px;'>         <h4 style='margin:0; color:#D84315;'>Barrio La Granja</h4>         <b>Zona:</b> Margen Derecha (Sur)<br>         <b>Nivel Siniestralidad:</b> <span style='color:red;'><b>Muy Alta</b></span><br>         <b>Coordenadas:</b> Lat: 8.73500 | Lon: -75.87600<br>         <p style='margin-top:5px;'>Eje neurálgico del sur (Diagonales 12 a 21). Alto índice de choques entre motocicletas.</p>     </div>     </div>`)[0];
+                popup_01268a5b993b6fe27ebb595a2c7c287b.setContent(html_0eba990df09368bc6c950f32eb5b00a7);
+            
+        
+
+        circle_b8db8cfd9e5787fcaa054923fcf2109e.bindPopup(popup_01268a5b993b6fe27ebb595a2c7c287b)
+        ;
+
+        
+    
+    
+            circle_b8db8cfd9e5787fcaa054923fcf2109e.bindTooltip(
+                `<div>
+                     Barrio La Granja (Muy Alta)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f75dbbd067d1ad98f2f3ce261abc4361 = L.marker(
+                [8.735, -75.876],
+                {
+}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+            var div_icon_6784e16385894be6ddb3fc4732d156e4 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-family: Arial; font-weight: bold; font-size: 10px; color: #212121; background: rgba(255,255,255,0.85); padding: 2px 5px; border-radius: 4px; border: 1px solid #D84315; white-space: nowrap;\u0027\u003eLa Granja\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_f75dbbd067d1ad98f2f3ce261abc4361.setIcon(div_icon_6784e16385894be6ddb3fc4732d156e4);
+            
+    
+            var circle_0538788d828e00b801ca2ee82194f519 = L.circle(
+                [8.796, -75.856],
+                {"bubblingMouseEvents": true, "color": "#C62828", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#C62828", "fillOpacity": 0.22, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 800, "stroke": true, "weight": 2}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+        var popup_244721fcb52ee1d5e9dd0b380481d65a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_10cdfb001a3b3dcebf5ee9cbc2737d9e = $(`<div id="html_10cdfb001a3b3dcebf5ee9cbc2737d9e" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 240px;'>         <h4 style='margin:0; color:#C62828;'>Barrio Mocarí</h4>         <b>Zona:</b> Margen Derecha (Norte)<br>         <b>Nivel Siniestralidad:</b> <span style='color:red;'><b>Crítica</b></span><br>         <b>Coordenadas:</b> Lat: 8.79600 | Lon: -75.85600<br>         <p style='margin-top:5px;'>Travesía urbana de la Troncal de Occidente. Tráfico pesado y cruces universitarios (Unicórdoba).</p>     </div>     </div>`)[0];
+                popup_244721fcb52ee1d5e9dd0b380481d65a.setContent(html_10cdfb001a3b3dcebf5ee9cbc2737d9e);
+            
+        
+
+        circle_0538788d828e00b801ca2ee82194f519.bindPopup(popup_244721fcb52ee1d5e9dd0b380481d65a)
+        ;
+
+        
+    
+    
+            circle_0538788d828e00b801ca2ee82194f519.bindTooltip(
+                `<div>
+                     Barrio Mocarí (Crítica)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d35ff2593fe8b6c6752fdfb7594a0ce8 = L.marker(
+                [8.796, -75.856],
+                {
+}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+            var div_icon_f5410914037aa2a9dd8023f5122144ce = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-family: Arial; font-weight: bold; font-size: 10px; color: #212121; background: rgba(255,255,255,0.85); padding: 2px 5px; border-radius: 4px; border: 1px solid #C62828; white-space: nowrap;\u0027\u003eMocar\u00ed\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_d35ff2593fe8b6c6752fdfb7594a0ce8.setIcon(div_icon_f5410914037aa2a9dd8023f5122144ce);
+            
+    
+            var circle_8439942141757f445d47a4a99aad1548 = L.circle(
+                [8.756, -75.8845],
+                {"bubblingMouseEvents": true, "color": "#EF6C00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF6C00", "fillOpacity": 0.22, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 600, "stroke": true, "weight": 2}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+        var popup_f3f73152fdd3a51f7fd2002577afea3a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6bf6526a5cfc43489827d156418b248f = $(`<div id="html_6bf6526a5cfc43489827d156418b248f" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 240px;'>         <h4 style='margin:0; color:#EF6C00;'>Barrio Centro Comercial y Administrativo</h4>         <b>Zona:</b> Margen Derecha (Centro)<br>         <b>Nivel Siniestralidad:</b> <span style='color:red;'><b>Alta</b></span><br>         <b>Coordenadas:</b> Lat: 8.75600 | Lon: -75.88450<br>         <p style='margin-top:5px;'>Carreras 2ª a 5ª entre Calles 24 a 37. Atropellos a peatones y colisiones en esquinas ciegas.</p>     </div>     </div>`)[0];
+                popup_f3f73152fdd3a51f7fd2002577afea3a.setContent(html_6bf6526a5cfc43489827d156418b248f);
+            
+        
+
+        circle_8439942141757f445d47a4a99aad1548.bindPopup(popup_f3f73152fdd3a51f7fd2002577afea3a)
+        ;
+
+        
+    
+    
+            circle_8439942141757f445d47a4a99aad1548.bindTooltip(
+                `<div>
+                     Barrio Centro Comercial y Administrativo (Alta)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_27dd401eebee858d702577fd461a8aa8 = L.marker(
+                [8.756, -75.8845],
+                {
+}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+            var div_icon_fd9912204cc8226d0ef2e46775f570c4 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-family: Arial; font-weight: bold; font-size: 10px; color: #212121; background: rgba(255,255,255,0.85); padding: 2px 5px; border-radius: 4px; border: 1px solid #EF6C00; white-space: nowrap;\u0027\u003eCentro Comercial y Administrativo\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_27dd401eebee858d702577fd461a8aa8.setIcon(div_icon_fd9912204cc8226d0ef2e46775f570c4);
+            
+    
+            var circle_ea45845c45eb3862367abce447e9155a = L.circle(
+                [8.773, -75.864],
+                {"bubblingMouseEvents": true, "color": "#F57C00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F57C00", "fillOpacity": 0.22, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 700, "stroke": true, "weight": 2}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+        var popup_e31d74d0f56fd70753bd67c947eb8b64 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f4711f5ab3393805a210cd11d6e22eda = $(`<div id="html_f4711f5ab3393805a210cd11d6e22eda" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 240px;'>         <h4 style='margin:0; color:#F57C00;'>Barrio El Recreo y La Castellana</h4>         <b>Zona:</b> Margen Derecha (Norte)<br>         <b>Nivel Siniestralidad:</b> <span style='color:red;'><b>Media-Alta</b></span><br>         <b>Coordenadas:</b> Lat: 8.77300 | Lon: -75.86400<br>         <p style='margin-top:5px;'>Vías residenciales amplias. Choques por exceso de velocidad y desobediencia del PARE.</p>     </div>     </div>`)[0];
+                popup_e31d74d0f56fd70753bd67c947eb8b64.setContent(html_f4711f5ab3393805a210cd11d6e22eda);
+            
+        
+
+        circle_ea45845c45eb3862367abce447e9155a.bindPopup(popup_e31d74d0f56fd70753bd67c947eb8b64)
+        ;
+
+        
+    
+    
+            circle_ea45845c45eb3862367abce447e9155a.bindTooltip(
+                `<div>
+                     Barrio El Recreo y La Castellana (Media-Alta)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ee2bd373d0503016bf49a09bd5b90591 = L.marker(
+                [8.773, -75.864],
+                {
+}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+            var div_icon_02d5d1952d01346a85294e26cd9cac73 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-family: Arial; font-weight: bold; font-size: 10px; color: #212121; background: rgba(255,255,255,0.85); padding: 2px 5px; border-radius: 4px; border: 1px solid #F57C00; white-space: nowrap;\u0027\u003eEl Recreo y La Castellana\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_ee2bd373d0503016bf49a09bd5b90591.setIcon(div_icon_02d5d1952d01346a85294e26cd9cac73);
+            
+    
+            var circle_897cf35b1795019dd4526b7fce97b0b4 = L.circle(
+                [8.749, -75.858],
+                {"bubblingMouseEvents": true, "color": "#FB8C00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FB8C00", "fillOpacity": 0.22, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 600, "stroke": true, "weight": 2}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+        var popup_f6726680f5de834a346ea3ca11af927b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8a8c899e3738c65d3b5a50d63d5ab36a = $(`<div id="html_8a8c899e3738c65d3b5a50d63d5ab36a" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 240px;'>         <h4 style='margin:0; color:#FB8C00;'>Barrio La Pradera</h4>         <b>Zona:</b> Margen Derecha (Oriente)<br>         <b>Nivel Siniestralidad:</b> <span style='color:red;'><b>Alta</b></span><br>         <b>Coordenadas:</b> Lat: 8.74900 | Lon: -75.85800<br>         <p style='margin-top:5px;'>Conexión directa con la Terminal de Transportes y la Calle 29.</p>     </div>     </div>`)[0];
+                popup_f6726680f5de834a346ea3ca11af927b.setContent(html_8a8c899e3738c65d3b5a50d63d5ab36a);
+            
+        
+
+        circle_897cf35b1795019dd4526b7fce97b0b4.bindPopup(popup_f6726680f5de834a346ea3ca11af927b)
+        ;
+
+        
+    
+    
+            circle_897cf35b1795019dd4526b7fce97b0b4.bindTooltip(
+                `<div>
+                     Barrio La Pradera (Alta)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f9dbdf3b9df1602e477bd3a9e70b352b = L.marker(
+                [8.749, -75.858],
+                {
+}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+            var div_icon_fba2c6e758e3bfe28eecfac7595ba4c3 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-family: Arial; font-weight: bold; font-size: 10px; color: #212121; background: rgba(255,255,255,0.85); padding: 2px 5px; border-radius: 4px; border: 1px solid #FB8C00; white-space: nowrap;\u0027\u003eLa Pradera\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_f9dbdf3b9df1602e477bd3a9e70b352b.setIcon(div_icon_fba2c6e758e3bfe28eecfac7595ba4c3);
+            
+    
+            var circle_4d673e315a0bb5f2e416e4002785adf4 = L.circle(
+                [8.728, -75.871],
+                {"bubblingMouseEvents": true, "color": "#E65100", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E65100", "fillOpacity": 0.22, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 650, "stroke": true, "weight": 2}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+        var popup_5bfc7c1c2573e87de2d71788832c1924 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f7d282b568d8a2ce39b5e3b7f36e0a5a = $(`<div id="html_f7d282b568d8a2ce39b5e3b7f36e0a5a" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 240px;'>         <h4 style='margin:0; color:#E65100;'>Barrio Mogambo y Boston</h4>         <b>Zona:</b> Margen Derecha (Sur)<br>         <b>Nivel Siniestralidad:</b> <span style='color:red;'><b>Alta</b></span><br>         <b>Coordenadas:</b> Lat: 8.72800 | Lon: -75.87100<br>         <p style='margin-top:5px;'>Corredores sur de conexión con la Glorieta de la Vida y salida a Medellín.</p>     </div>     </div>`)[0];
+                popup_5bfc7c1c2573e87de2d71788832c1924.setContent(html_f7d282b568d8a2ce39b5e3b7f36e0a5a);
+            
+        
+
+        circle_4d673e315a0bb5f2e416e4002785adf4.bindPopup(popup_5bfc7c1c2573e87de2d71788832c1924)
+        ;
+
+        
+    
+    
+            circle_4d673e315a0bb5f2e416e4002785adf4.bindTooltip(
+                `<div>
+                     Barrio Mogambo y Boston (Alta)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_af1d0f0f2941de9e1deb3a031d6d5e92 = L.marker(
+                [8.728, -75.871],
+                {
+}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+            var div_icon_6c99e705e3608d2fca6444249d767d5b = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-family: Arial; font-weight: bold; font-size: 10px; color: #212121; background: rgba(255,255,255,0.85); padding: 2px 5px; border-radius: 4px; border: 1px solid #E65100; white-space: nowrap;\u0027\u003eMogambo y Boston\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_af1d0f0f2941de9e1deb3a031d6d5e92.setIcon(div_icon_6c99e705e3608d2fca6444249d767d5b);
+            
+    
+            var circle_2e5f3bd2159a335c1c40d2a757648430 = L.circle(
+                [8.753, -75.899],
+                {"bubblingMouseEvents": true, "color": "#C62828", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#C62828", "fillOpacity": 0.22, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 700, "stroke": true, "weight": 2}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+        var popup_f8e298c202904da48920ef221f6939bf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_94fd5e7c34a1c6e364ce64bfcf6d6387 = $(`<div id="html_94fd5e7c34a1c6e364ce64bfcf6d6387" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 240px;'>         <h4 style='margin:0; color:#C62828;'>Barrio El Dorado y Santa Fe</h4>         <b>Zona:</b> Margen Izquierda (Occidente)<br>         <b>Nivel Siniestralidad:</b> <span style='color:red;'><b>Crítica</b></span><br>         <b>Coordenadas:</b> Lat: 8.75300 | Lon: -75.89900<br>         <p style='margin-top:5px;'>Eje de la Vía a Arboletes. Choques frontales de motos y vehículos de carga interdepartamental.</p>     </div>     </div>`)[0];
+                popup_f8e298c202904da48920ef221f6939bf.setContent(html_94fd5e7c34a1c6e364ce64bfcf6d6387);
+            
+        
+
+        circle_2e5f3bd2159a335c1c40d2a757648430.bindPopup(popup_f8e298c202904da48920ef221f6939bf)
+        ;
+
+        
+    
+    
+            circle_2e5f3bd2159a335c1c40d2a757648430.bindTooltip(
+                `<div>
+                     Barrio El Dorado y Santa Fe (Crítica)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1022eedb6d8d40c9c0eecd4e7b3f72a6 = L.marker(
+                [8.753, -75.899],
+                {
+}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+            var div_icon_efcd0277cfc7c650d93cf615d5f22189 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-family: Arial; font-weight: bold; font-size: 10px; color: #212121; background: rgba(255,255,255,0.85); padding: 2px 5px; border-radius: 4px; border: 1px solid #C62828; white-space: nowrap;\u0027\u003eEl Dorado y Santa Fe\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_1022eedb6d8d40c9c0eecd4e7b3f72a6.setIcon(div_icon_efcd0277cfc7c650d93cf615d5f22189);
+            
+    
+            var circle_56692f75adde14ce4df0c7e3b800bca8 = L.circle(
+                [8.7615, -75.889],
+                {"bubblingMouseEvents": true, "color": "#D84315", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D84315", "fillOpacity": 0.22, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 550, "stroke": true, "weight": 2}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+        var popup_7bb5d047a2b81977c7dad2064cdc3414 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8b267da32630d65672cf068cd8c06bb2 = $(`<div id="html_8b267da32630d65672cf068cd8c06bb2" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 240px;'>         <h4 style='margin:0; color:#D84315;'>Barrio El Amparo y La Ribera</h4>         <b>Zona:</b> Margen Izquierda (Occidente)<br>         <b>Nivel Siniestralidad:</b> <span style='color:red;'><b>Muy Alta</b></span><br>         <b>Coordenadas:</b> Lat: 8.76150 | Lon: -75.88900<br>         <p style='margin-top:5px;'>Desembocadura directa del Puente de la Calle 41 (Segundo Centenario). Retención y frenado intempestivo.</p>     </div>     </div>`)[0];
+                popup_7bb5d047a2b81977c7dad2064cdc3414.setContent(html_8b267da32630d65672cf068cd8c06bb2);
+            
+        
+
+        circle_56692f75adde14ce4df0c7e3b800bca8.bindPopup(popup_7bb5d047a2b81977c7dad2064cdc3414)
+        ;
+
+        
+    
+    
+            circle_56692f75adde14ce4df0c7e3b800bca8.bindTooltip(
+                `<div>
+                     Barrio El Amparo y La Ribera (Muy Alta)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e59f01ce5b3d05d97f3d7ecf1196c5e2 = L.marker(
+                [8.7615, -75.889],
+                {
+}
+            ).addTo(feature_group_17abb3e6dc30e8705ebf782e77f20d69);
+        
+    
+            var div_icon_bff1ffbdde50b049d03ebd3f099d43d0 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-family: Arial; font-weight: bold; font-size: 10px; color: #212121; background: rgba(255,255,255,0.85); padding: 2px 5px; border-radius: 4px; border: 1px solid #D84315; white-space: nowrap;\u0027\u003eEl Amparo y La Ribera\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_e59f01ce5b3d05d97f3d7ecf1196c5e2.setIcon(div_icon_bff1ffbdde50b049d03ebd3f099d43d0);
+            
+    
+            feature_group_17abb3e6dc30e8705ebf782e77f20d69.addTo(map_ca1a53a2480d873942be9489dadaf6af);
+        
+    
+            var feature_group_eb2f8763727fd8499593772d8dbc5f18 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_7d22a72b5d90d21277ecdcbb1afff858 = L.circleMarker(
+                [8.7505, -75.8885],
+                {"bubblingMouseEvents": true, "color": "#000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb2f8763727fd8499593772d8dbc5f18);
+        
+    
+        var popup_986ebc96994bc3ee9dd74158d92f4455 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_be9a7ba48986d105314b0f416b3eeb81 = $(`<div id="html_be9a7ba48986d105314b0f416b3eeb81" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 230px;'>         <b style='color:#B71C1C;'>Puente Metálico Gustavo Rojas Pinilla</b><br>         <b>Tipo:</b> Puente<br>         <b>Riesgo:</b> Embudos viales, frenado de emergencia y choques por alcance     </div>     </div>`)[0];
+                popup_986ebc96994bc3ee9dd74158d92f4455.setContent(html_be9a7ba48986d105314b0f416b3eeb81);
+            
+        
+
+        circle_marker_7d22a72b5d90d21277ecdcbb1afff858.bindPopup(popup_986ebc96994bc3ee9dd74158d92f4455)
+        ;
+
+        
+    
+    
+            circle_marker_7d22a72b5d90d21277ecdcbb1afff858.bindTooltip(
+                `<div>
+                     Puente: Puente Metálico Gustavo Rojas Pinilla
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_18a679ca9184de5f5e5068a27805a5d4 = L.circleMarker(
+                [8.761, -75.882],
+                {"bubblingMouseEvents": true, "color": "#000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb2f8763727fd8499593772d8dbc5f18);
+        
+    
+        var popup_1df99659151958c1392a48838921ac7c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9c6f5766ff376f004452451c25bc4367 = $(`<div id="html_9c6f5766ff376f004452451c25bc4367" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 230px;'>         <b style='color:#B71C1C;'>Puente Segundo Centenario (Calle 41)</b><br>         <b>Tipo:</b> Puente<br>         <b>Riesgo:</b> Descenso veloz hacia El Amparo y choques múltiples     </div>     </div>`)[0];
+                popup_1df99659151958c1392a48838921ac7c.setContent(html_9c6f5766ff376f004452451c25bc4367);
+            
+        
+
+        circle_marker_18a679ca9184de5f5e5068a27805a5d4.bindPopup(popup_1df99659151958c1392a48838921ac7c)
+        ;
+
+        
+    
+    
+            circle_marker_18a679ca9184de5f5e5068a27805a5d4.bindTooltip(
+                `<div>
+                     Puente: Puente Segundo Centenario (Calle 41)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7e1d9de3677c055dcc829f6054e61319 = L.circleMarker(
+                [8.802, -75.851],
+                {"bubblingMouseEvents": true, "color": "#000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb2f8763727fd8499593772d8dbc5f18);
+        
+    
+        var popup_2a35f86dd882ca2bf16bd98b0cf4643c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_af0326b93de026fc419d9c825622342a = $(`<div id="html_af0326b93de026fc419d9c825622342a" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 230px;'>         <b style='color:#B71C1C;'>Glorieta de Mocarí</b><br>         <b>Tipo:</b> Glorieta<br>         <b>Riesgo:</b> Cruce entre Troncal Nacional, Circunvalar y Unicórdoba     </div>     </div>`)[0];
+                popup_2a35f86dd882ca2bf16bd98b0cf4643c.setContent(html_af0326b93de026fc419d9c825622342a);
+            
+        
+
+        circle_marker_7e1d9de3677c055dcc829f6054e61319.bindPopup(popup_2a35f86dd882ca2bf16bd98b0cf4643c)
+        ;
+
+        
+    
+    
+            circle_marker_7e1d9de3677c055dcc829f6054e61319.bindTooltip(
+                `<div>
+                     Glorieta: Glorieta de Mocarí
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ebf4d6d011c719936b2f1d8aa351a960 = L.circleMarker(
+                [8.73, -75.865],
+                {"bubblingMouseEvents": true, "color": "#000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb2f8763727fd8499593772d8dbc5f18);
+        
+    
+        var popup_25d04e82a3e5517f29232ef2f62a614f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b6cc45dd752a35994acbae26031b4d9c = $(`<div id="html_b6cc45dd752a35994acbae26031b4d9c" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 230px;'>         <b style='color:#B71C1C;'>Glorieta de la Vida / Las Vacas</b><br>         <b>Tipo:</b> Glorieta<br>         <b>Riesgo:</b> Convergencia de Cantaclaro, Circunvalar y salida al sur     </div>     </div>`)[0];
+                popup_25d04e82a3e5517f29232ef2f62a614f.setContent(html_b6cc45dd752a35994acbae26031b4d9c);
+            
+        
+
+        circle_marker_ebf4d6d011c719936b2f1d8aa351a960.bindPopup(popup_25d04e82a3e5517f29232ef2f62a614f)
+        ;
+
+        
+    
+    
+            circle_marker_ebf4d6d011c719936b2f1d8aa351a960.bindTooltip(
+                `<div>
+                     Glorieta: Glorieta de la Vida / Las Vacas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8ce2854ce8e6c4f6c6bc53a826516100 = L.circleMarker(
+                [8.754, -75.854],
+                {"bubblingMouseEvents": true, "color": "#000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb2f8763727fd8499593772d8dbc5f18);
+        
+    
+        var popup_0fdd06f7157fc75f7c2f8f6d9c0722f2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_03264b135b7feece6b33eeaec66a0150 = $(`<div id="html_03264b135b7feece6b33eeaec66a0150" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 230px;'>         <b style='color:#B71C1C;'>Cruce Terminal de Transportes (Calle 41 con Cra 29)</b><br>         <b>Tipo:</b> Intersección<br>         <b>Riesgo:</b> Flujo continuo de buses intermunicipales y taxis     </div>     </div>`)[0];
+                popup_0fdd06f7157fc75f7c2f8f6d9c0722f2.setContent(html_03264b135b7feece6b33eeaec66a0150);
+            
+        
+
+        circle_marker_8ce2854ce8e6c4f6c6bc53a826516100.bindPopup(popup_0fdd06f7157fc75f7c2f8f6d9c0722f2)
+        ;
+
+        
+    
+    
+            circle_marker_8ce2854ce8e6c4f6c6bc53a826516100.bindTooltip(
+                `<div>
+                     Intersección: Cruce Terminal de Transportes (Calle 41 con Cra 29)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_23375fbed5a5beda735df189c78cd629 = L.circleMarker(
+                [8.75, -75.869],
+                {"bubblingMouseEvents": true, "color": "#000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb2f8763727fd8499593772d8dbc5f18);
+        
+    
+        var popup_3c5160718d8914f63d2c19c3cc06d0f8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2c5434f2fc2416b9615d2abec2fe7788 = $(`<div id="html_2c5434f2fc2416b9615d2abec2fe7788" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; font-size: 12px; width: 230px;'>         <b style='color:#B71C1C;'>Intersección Circunvalar con Calle 29</b><br>         <b>Tipo:</b> Intersección<br>         <b>Riesgo:</b> Giro a la izquierda peligroso y alto índice de siniestros de motos     </div>     </div>`)[0];
+                popup_3c5160718d8914f63d2c19c3cc06d0f8.setContent(html_2c5434f2fc2416b9615d2abec2fe7788);
+            
+        
+
+        circle_marker_23375fbed5a5beda735df189c78cd629.bindPopup(popup_3c5160718d8914f63d2c19c3cc06d0f8)
+        ;
+
+        
+    
+    
+            circle_marker_23375fbed5a5beda735df189c78cd629.bindTooltip(
+                `<div>
+                     Intersección: Intersección Circunvalar con Calle 29
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_eb2f8763727fd8499593772d8dbc5f18.addTo(map_ca1a53a2480d873942be9489dadaf6af);
+        
+    
+            var heat_map_6fa97efec257bb4e2979f0cd817d0c09 = L.heatLayer(
+                [[8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7952, -75.8621, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.751, -75.885, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7925, -75.8612, 1.0], [8.7508, -75.8814, 1.0], [8.815, -75.835, 1.0], [8.7508, -75.8814, 1.0], [8.729, -75.875, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7925, -75.8612, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.762, -75.842, 1.0], [8.784, -75.857, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.768, -75.865, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.841, -75.801, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.755, -75.875, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.755, -75.875, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.762, -75.842, 1.0], [8.7508, -75.8814, 1.0], [8.729, -75.875, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.692, -75.821, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.761, -75.872, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.784, -75.857, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.751, -75.885, 1.0], [8.751, -75.885, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.7508, -75.8814, 1.0], [8.73, -75.865, 1.0], [8.73, -75.865, 1.0], [8.73, -75.865, 1.0], [8.73, -75.865, 1.0], [8.73, -75.865, 1.0], [8.741, -75.867, 1.0], [8.741, -75.867, 1.0], [8.741, -75.867, 1.0], [8.741, -75.867, 1.0], [8.741, -75.867, 1.0], [8.752, -75.869, 1.0], [8.752, -75.869, 1.0], [8.752, -75.869, 1.0], [8.752, -75.869, 1.0], [8.752, -75.869, 1.0], [8.763, -75.8675, 1.0], [8.763, -75.8675, 1.0], [8.763, -75.8675, 1.0], [8.763, -75.8675, 1.0], [8.763, -75.8675, 1.0], [8.775, -75.862, 1.0], [8.775, -75.862, 1.0], [8.775, -75.862, 1.0], [8.775, -75.862, 1.0], [8.775, -75.862, 1.0], [8.788, -75.857, 1.0], [8.788, -75.857, 1.0], [8.788, -75.857, 1.0], [8.788, -75.857, 1.0], [8.788, -75.857, 1.0], [8.802, -75.851, 1.0], [8.802, -75.851, 1.0], [8.802, -75.851, 1.0], [8.802, -75.851, 1.0], [8.802, -75.851, 1.0], [8.7625, -75.887, 1.0], [8.7625, -75.887, 1.0], [8.7625, -75.887, 1.0], [8.7625, -75.887, 1.0], [8.7625, -75.887, 1.0], [8.761, -75.882, 1.0], [8.761, -75.882, 1.0], [8.761, -75.882, 1.0], [8.761, -75.882, 1.0], [8.761, -75.882, 1.0], [8.76, -75.875, 1.0], [8.76, -75.875, 1.0], [8.76, -75.875, 1.0], [8.76, -75.875, 1.0], [8.76, -75.875, 1.0], [8.758, -75.868, 1.0], [8.758, -75.868, 1.0], [8.758, -75.868, 1.0], [8.758, -75.868, 1.0], [8.758, -75.868, 1.0], [8.754, -75.854, 1.0], [8.754, -75.854, 1.0], [8.754, -75.854, 1.0], [8.754, -75.854, 1.0], [8.754, -75.854, 1.0], [8.79, -75.8565, 1.0], [8.79, -75.8565, 1.0], [8.79, -75.8565, 1.0], [8.79, -75.8565, 1.0], [8.79, -75.8565, 1.0], [8.802, -75.851, 1.0], [8.802, -75.851, 1.0], [8.802, -75.851, 1.0], [8.802, -75.851, 1.0], [8.802, -75.851, 1.0], [8.825, -75.839, 1.0], [8.825, -75.839, 1.0], [8.825, -75.839, 1.0], [8.825, -75.839, 1.0], [8.825, -75.839, 1.0], [8.845, -75.828, 1.0], [8.845, -75.828, 1.0], [8.845, -75.828, 1.0], [8.845, -75.828, 1.0], [8.845, -75.828, 1.0], [8.748, -75.889, 1.0], [8.748, -75.889, 1.0], [8.748, -75.889, 1.0], [8.748, -75.889, 1.0], [8.748, -75.889, 1.0], [8.755, -75.8865, 1.0], [8.755, -75.8865, 1.0], [8.755, -75.8865, 1.0], [8.755, -75.8865, 1.0], [8.755, -75.8865, 1.0], [8.761, -75.882, 1.0], [8.761, -75.882, 1.0], [8.761, -75.882, 1.0], [8.761, -75.882, 1.0], [8.761, -75.882, 1.0], [8.752, -75.888, 1.0], [8.752, -75.888, 1.0], [8.752, -75.888, 1.0], [8.752, -75.888, 1.0], [8.752, -75.888, 1.0], [8.751, -75.878, 1.0], [8.751, -75.878, 1.0], [8.751, -75.878, 1.0], [8.751, -75.878, 1.0], [8.751, -75.878, 1.0], [8.75, -75.869, 1.0], [8.75, -75.869, 1.0], [8.75, -75.869, 1.0], [8.75, -75.869, 1.0], [8.75, -75.869, 1.0], [8.748, -75.856, 1.0], [8.748, -75.856, 1.0], [8.748, -75.856, 1.0], [8.748, -75.856, 1.0], [8.748, -75.856, 1.0], [8.76, -75.892, 1.0], [8.76, -75.892, 1.0], [8.76, -75.892, 1.0], [8.76, -75.892, 1.0], [8.76, -75.892, 1.0], [8.753, -75.899, 1.0], [8.753, -75.899, 1.0], [8.753, -75.899, 1.0], [8.753, -75.899, 1.0], [8.753, -75.899, 1.0], [8.748, -75.912, 1.0], [8.748, -75.912, 1.0], [8.748, -75.912, 1.0], [8.748, -75.912, 1.0], [8.748, -75.912, 1.0], [8.742, -75.93, 1.0], [8.742, -75.93, 1.0], [8.742, -75.93, 1.0], [8.742, -75.93, 1.0], [8.742, -75.93, 1.0]],
+                {
+  "minOpacity": 0.35,
+  "maxZoom": 18,
+  "radius": 16,
+  "blur": 18,
+}
+            );
+        
+    
+            heat_map_6fa97efec257bb4e2979f0cd817d0c09.addTo(map_ca1a53a2480d873942be9489dadaf6af);
+        
+    
+            var layer_control_28ccb3126331c7de85a19a5ad3974ae8_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_5baabc622db47bd899a87aab960f90c8,
+                },
+                overlays :  {
+                    "L\u00edmite Municipal de Monter\u00eda" : geo_json_0d66c06ef52ffed70a882d957db01497,
+                    "\ud83d\udee3\ufe0f Calles y Avenidas de Mayor Accidentalidad" : feature_group_98d6e3007cd30b8a9a9ef78a2afa978e,
+                    "\ud83c\udfd8\ufe0f Barrios con Mayor Incidencia de Accidentes" : feature_group_17abb3e6dc30e8705ebf782e77f20d69,
+                    "\u26a0\ufe0f Puentes y Glorietas Cr\u00edticas (Puntos Negros)" : feature_group_eb2f8763727fd8499593772d8dbc5f18,
+                    "\ud83d\udd25 Mapa de Calor de Accidentes" : heat_map_6fa97efec257bb4e2979f0cd817d0c09,
+                },
+            };
+            let layer_control_28ccb3126331c7de85a19a5ad3974ae8 = L.control.layers(
+                layer_control_28ccb3126331c7de85a19a5ad3974ae8_layers.base_layers,
+                layer_control_28ccb3126331c7de85a19a5ad3974ae8_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_ca1a53a2480d873942be9489dadaf6af);
+
+        
+    
+            tile_layer_5baabc622db47bd899a87aab960f90c8.addTo(map_ca1a53a2480d873942be9489dadaf6af);
+        
+    
+            geo_json_0d66c06ef52ffed70a882d957db01497.addTo(map_ca1a53a2480d873942be9489dadaf6af);
+        
+    
+            feature_group_98d6e3007cd30b8a9a9ef78a2afa978e.addTo(map_ca1a53a2480d873942be9489dadaf6af);
+        
+    
+                marker_cd4df4b80cfe46854ef563d93899a887.setIcon(div_icon_a1e6f35a4ba3d1d252a1497a3ee54711);
+            
+    
+                marker_f75dbbd067d1ad98f2f3ce261abc4361.setIcon(div_icon_6784e16385894be6ddb3fc4732d156e4);
+            
+    
+                marker_d35ff2593fe8b6c6752fdfb7594a0ce8.setIcon(div_icon_f5410914037aa2a9dd8023f5122144ce);
+            
+    
+                marker_27dd401eebee858d702577fd461a8aa8.setIcon(div_icon_fd9912204cc8226d0ef2e46775f570c4);
+            
+    
+                marker_ee2bd373d0503016bf49a09bd5b90591.setIcon(div_icon_02d5d1952d01346a85294e26cd9cac73);
+            
+    
+                marker_f9dbdf3b9df1602e477bd3a9e70b352b.setIcon(div_icon_fba2c6e758e3bfe28eecfac7595ba4c3);
+            
+    
+                marker_af1d0f0f2941de9e1deb3a031d6d5e92.setIcon(div_icon_6c99e705e3608d2fca6444249d767d5b);
+            
+    
+                marker_1022eedb6d8d40c9c0eecd4e7b3f72a6.setIcon(div_icon_efcd0277cfc7c650d93cf615d5f22189);
+            
+    
+                marker_e59f01ce5b3d05d97f3d7ecf1196c5e2.setIcon(div_icon_bff1ffbdde50b049d03ebd3f099d43d0);
+            
+    
+            feature_group_17abb3e6dc30e8705ebf782e77f20d69.addTo(map_ca1a53a2480d873942be9489dadaf6af);
+        
+    
+            feature_group_eb2f8763727fd8499593772d8dbc5f18.addTo(map_ca1a53a2480d873942be9489dadaf6af);
+        
+    
+            heat_map_6fa97efec257bb4e2979f0cd817d0c09.addTo(map_ca1a53a2480d873942be9489dadaf6af);
+        
+</script>
+</html>

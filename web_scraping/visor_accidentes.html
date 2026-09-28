@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor y Sistema de Verificación de Direcciones - Accidentes Montería & Córdoba</title>
+    <!-- Google Fonts & Tailwind CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        darkbg: '#0b0f19',
+                        cardbg: '#111827',
+                        borderbg: '#1f2937'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0b0f19; color: #f3f4f6; }
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .btn-glow {
+            box-shadow: 0 0 15px rgba(2, 132, 199, 0.35);
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 25px rgba(2, 132, 199, 0.6);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #374151; }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen pb-12">
+
+    <!-- Header Header -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-gray-800 px-6 py-4 mb-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                    📍
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold font-outfit text-white tracking-wide">Visor Inteligente de Siniestros Viales</h1>
+                    <p class="text-xs text-sky-400 font-medium">Proyecto Integrador II • Montería & Córdoba</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <button id="btnExportCSV" onclick="exportData('csv')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm font-semibold flex items-center gap-2 transition-all shadow-md">
+                    📥 Exportar CSV Limpio
+                </button>
+                <button id="btnExportJSON" onclick="exportData('json')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-sm font-semibold flex items-center gap-2 transition-all shadow-md">
+                    📄 Exportar JSON
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6">
+
+        <!-- Stat Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div class="glass-panel p-5 rounded-2xl border border-gray-800">
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Total Noticias Procesadas</p>
+                <h3 id="statTotal" class="text-3xl font-extrabold font-outfit text-white mt-1">338</h3>
+                <span class="text-xs text-gray-500">Noticias rastreadas</span>
+            </div>
+            <div class="glass-panel p-5 rounded-2xl border border-amber-500/20 bg-amber-500/5">
+                <p class="text-xs font-semibold text-amber-400 uppercase tracking-wider">🟡 Pendientes Verificación Manual</p>
+                <h3 id="statPending" class="text-3xl font-extrabold font-outfit text-amber-400 mt-1">318</h3>
+                <span class="text-xs text-amber-300/70">Requieren abrir link y verificar</span>
+            </div>
+            <div class="glass-panel p-5 rounded-2xl border border-emerald-500/20 bg-emerald-500/5">
+                <p class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">🟢 Direcciones Verificadas</p>
+                <h3 id="statVerified" class="text-3xl font-extrabold font-outfit text-emerald-400 mt-1">20</h3>
+                <span class="text-xs text-emerald-300/70">Ubicación exacta de barrio/calle</span>
+            </div>
+            <div class="glass-panel p-5 rounded-2xl border border-rose-500/20 bg-rose-500/5">
+                <p class="text-xs font-semibold text-rose-400 uppercase tracking-wider">Victimas Afectadas</p>
+                <h3 id="statVictims" class="text-3xl font-extrabold font-outfit text-rose-400 mt-1">--</h3>
+                <span class="text-xs text-rose-300/70">Fallecidos y lesionados</span>
+            </div>
+        </div>
+
+        <!-- Filter Bar & Search -->
+        <div class="glass-panel p-6 rounded-2xl border border-gray-800 mb-8 space-y-4">
+            
+            <!-- Quick Filter Tabs -->
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-800 pb-4">
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="setFilterStatus('all')" id="tabAll" class="px-4 py-2 rounded-xl text-sm font-semibold bg-sky-600 text-white shadow-md transition-all">
+                        Todos (<span id="countTabAll">338</span>)
+                    </button>
+                    <button onclick="setFilterStatus('pending')" id="tabPending" class="px-4 py-2 rounded-xl text-sm font-semibold bg-gray-800 text-amber-400 hover:bg-gray-700 transition-all">
+                        🟡 Pendientes de Verificación (<span id="countTabPending">318</span>)
+                    </button>
+                    <button onclick="setFilterStatus('verified')" id="tabVerified" class="px-4 py-2 rounded-xl text-sm font-semibold bg-gray-800 text-emerald-400 hover:bg-gray-700 transition-all">
+                        🟢 Direcciones Verificadas (<span id="countTabVerified">20</span>)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1">🔍 Buscar Palabra Clave / Titular / Dirección</label>
+                    <input type="text" id="searchInput" oninput="renderTable()" placeholder="Ej: Circunvalar, Mocarí, Motocicleta, Cereté..." class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-sky-500 transition-all">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1">🏛️ Filtrar por Municipio</label>
+                    <select id="filterMunicipio" onchange="renderTable()" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-sky-500 transition-all">
+                        <option value="">Todos los Municipios</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1">📰 Filtrar por Periódico / Fuente</label>
+                    <select id="filterFuente" onchange="renderTable()" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-sky-500 transition-all">
+                        <option value="">Todas las Fuentes</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Table Card -->
+        <div class="glass-panel rounded-2xl border border-gray-800 overflow-hidden shadow-2xl">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-gray-300">
+                    <thead class="bg-gray-900/90 text-xs uppercase tracking-wider text-gray-400 border-b border-gray-800">
+                        <tr>
+                            <th class="py-4 px-4 w-16 text-center">ID</th>
+                            <th class="py-4 px-4 w-32">Estado</th>
+                            <th class="py-4 px-4 w-36">Fecha / Periódico</th>
+                            <th class="py-4 px-5">Titular de la Noticia</th>
+                            <th class="py-4 px-5 w-72">Dirección Específica (Editable)</th>
+                            <th class="py-4 px-4 w-40 text-center">Verificación Manual</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="divide-y divide-gray-800/60 font-normal">
+                        <!-- Table rows rendered dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Table Footer Pagination/Status -->
+            <div class="px-6 py-4 bg-gray-900/80 border-t border-gray-800 flex justify-between items-center text-xs text-gray-400">
+                <div>Mostrando <span id="showingCount" class="text-white font-bold">0</span> registros</div>
+                <div class="text-sky-400">💡 Consejo: Haz clic en <b>"🔗 Abrir Noticia"</b> para leer el artículo original en una pestaña nueva.</div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Embedded Data Script -->
+    <script id="accidentesDataScript" src="accidentes_data.js"></script>
+    
+    <script>
+        let rawData = [];
+        let currentStatusFilter = 'all';
+
+        // Initial Load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.ACCIDENTES_DATA && Array.isArray(window.ACCIDENTES_DATA)) {
+                rawData = window.ACCIDENTES_DATA;
+                initApp();
+            } else {
+                fetch('accidentes_limpios_deep_cleaned.json')
+                    .then(res => res.json())
+                    .then(data => {
+                        rawData = data;
+                        initApp();
+                    })
+                    .catch(err => {
+                        console.error('Error cargando datos JSON:', err);
+                        document.getElementById('tableBody').innerHTML = `
+                            <tr>
+                                <td colspan="6" class="text-center py-8 text-rose-400 font-semibold">
+                                    ⚠ No se pudieron cargar los datos dinámicos. Ejecuta <code>python web_scraping/deep_cleaning_pipeline.py</code>.
+                                </td>
+                            </tr>
+                        `;
+                    });
+            }
+        });
+
+        function initApp() {
+            // Restore any manual edits from localStorage
+            const savedEdits = localStorage.getItem('accidentes_user_edits');
+            if (savedEdits) {
+                const editsMap = JSON.parse(savedEdits);
+                rawData.forEach(item => {
+                    if (editsMap[item.id]) {
+                        item.direccion_especifica = editsMap[item.id].direccion;
+                        item.estado_verificacion = '🟢 Verificada / Específica';
+                    }
+                });
+            }
+
+            populateSelects();
+            updateStats();
+            renderTable();
+        }
+
+        function updateStats() {
+            const total = rawData.length;
+            const pending = rawData.filter(d => d.estado_verificacion.includes('Pendiente')).length;
+            const verified = total - pending;
+            
+            let totalFallecidos = 0;
+            let totalHeridos = 0;
+            rawData.forEach(d => {
+                totalFallecidos += Number(d.cantidad_fallecidos || 0);
+                totalHeridos += Number(d.cantidad_heridos || 0);
+            });
+
+            document.getElementById('statTotal').innerText = total;
+            document.getElementById('statPending').innerText = pending;
+            document.getElementById('statVerified').innerText = verified;
+            document.getElementById('statVictims').innerText = `${totalFallecidos} 💀 / ${totalHeridos} 🩹`;
+
+            document.getElementById('countTabAll').innerText = total;
+            document.getElementById('countTabPending').innerText = pending;
+            document.getElementById('countTabVerified').innerText = verified;
+        }
+
+        function populateSelects() {
+            const municipios = new Set();
+            const fuentes = new Set();
+
+            rawData.forEach(d => {
+                if (d.municipio) municipios.add(d.municipio);
+                if (d.fuente) fuentes.add(d.fuente);
+            });
+
+            const selMuni = document.getElementById('filterMunicipio');
+            const selFuente = document.getElementById('filterFuente');
+
+            Array.from(municipios).sort().forEach(m => {
+                selMuni.innerHTML += `<option value="${m}">${m}</option>`;
+            });
+
+            Array.from(fuentes).sort().forEach(f => {
+                selFuente.innerHTML += `<option value="${f}">${f}</option>`;
+            });
+        }
+
+        function setFilterStatus(status) {
+            currentStatusFilter = status;
+            
+            // Tab styling toggle
+            document.getElementById('tabAll').className = status === 'all' 
+                ? 'px-4 py-2 rounded-xl text-sm font-semibold bg-sky-600 text-white shadow-md transition-all'
+                : 'px-4 py-2 rounded-xl text-sm font-semibold bg-gray-800 text-gray-300 hover:bg-gray-700 transition-all';
+                
+            document.getElementById('tabPending').className = status === 'pending'
+                ? 'px-4 py-2 rounded-xl text-sm font-semibold bg-amber-500 text-gray-950 font-bold shadow-md transition-all'
+                : 'px-4 py-2 rounded-xl text-sm font-semibold bg-gray-800 text-amber-400 hover:bg-gray-700 transition-all';
+
+            document.getElementById('tabVerified').className = status === 'verified'
+                ? 'px-4 py-2 rounded-xl text-sm font-semibold bg-emerald-500 text-gray-950 font-bold shadow-md transition-all'
+                : 'px-4 py-2 rounded-xl text-sm font-semibold bg-gray-800 text-emerald-400 hover:bg-gray-700 transition-all';
+
+            renderTable();
+        }
+
+        function renderTable() {
+            const search = document.getElementById('searchInput').value.toLowerCase().strip ? document.getElementById('searchInput').value.toLowerCase().strip() : document.getElementById('searchInput').value.toLowerCase();
+            const muni = document.getElementById('filterMunicipio').value;
+            const fuente = document.getElementById('filterFuente').value;
+
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            const filtered = rawData.filter(item => {
+                // Status Filter
+                if (currentStatusFilter === 'pending' && !item.estado_verificacion.includes('Pendiente')) return false;
+                if (currentStatusFilter === 'verified' && item.estado_verificacion.includes('Pendiente')) return false;
+
+                // Select Filters
+                if (muni && item.municipio !== muni) return false;
+                if (fuente && item.fuente !== fuente) return false;
+
+                // Text Search
+                if (search) {
+                    const matchText = `${item.titulo} ${item.direccion_lugar} ${item.direccion_especifica} ${item.fuente} ${item.fecha_accidente}`.toLowerCase();
+                    if (!matchText.includes(search)) return false;
+                }
+
+                return true;
+            });
+
+            document.getElementById('showingCount').innerText = filtered.length;
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center py-12 text-gray-500">
+                            No se encontraron accidentes con los filtros seleccionados.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const isPending = item.estado_verificacion.includes('Pendiente');
+                const badgeClass = isPending 
+                    ? 'bg-amber-500/10 text-amber-400 border-amber-500/30' 
+                    : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30';
+                
+                const badgeText = isPending ? '🟡 Pendiente' : '🟢 Verificada';
+
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-gray-800/40 transition-colors';
+                tr.innerHTML = `
+                    <td class="py-4 px-4 text-center font-mono font-bold text-gray-400">${item.id}</td>
+                    <td class="py-4 px-4">
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border ${badgeClass}">
+                            ${badgeText}
+                        </span>
+                    </td>
+                    <td class="py-4 px-4">
+                        <div class="text-xs font-semibold text-gray-300">${item.fecha_accidente || item.fecha_publicacion || ''}</div>
+                        <div class="text-xs text-sky-400 font-medium">${item.fuente || 'Sin fuente'}</div>
+                    </td>
+                    <td class="py-4 px-5">
+                        <div class="text-sm font-medium text-gray-200 line-clamp-2 leading-snug">${item.titulo || ''}</div>
+                        <div class="text-xs text-gray-400 mt-1">🚗 ${item.vehiculos_involucrados || 'Vehículo no especificado'}</div>
+                    </td>
+                    <td class="py-4 px-5">
+                        <div class="flex items-center gap-2">
+                            <input type="text" id="input_dir_${item.id}" value="${item.direccion_especifica || item.direccion_lugar || ''}" 
+                                class="w-full bg-gray-900 border border-gray-700 focus:border-sky-500 rounded-lg px-3 py-1.5 text-xs text-white transition-all"
+                                placeholder="Escribe la dirección verificada...">
+                            <button onclick="saveAddressEdit(${item.id})" title="Guardar dirección" class="p-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-bold shadow">
+                                💾
+                            </button>
+                        </div>
+                        <div class="text-[10px] text-gray-400 mt-1">Original: ${item.direccion_lugar || ''}</div>
+                    </td>
+                    <td class="py-4 px-4 text-center">
+                        ${item.url ? `
+                            <a href="${item.url}" target="_blank" rel="noopener noreferrer" 
+                               class="inline-flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white rounded-xl text-xs font-semibold shadow-md btn-glow transition-all">
+                                🔗 Abrir Noticia
+                            </a>
+                        ` : '<span class="text-xs text-gray-600">Sin URL</span>'}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function saveAddressEdit(id) {
+            const input = document.getElementById(`input_dir_${id}`);
+            if (!input) return;
+
+            const newDir = input.value.trim();
+            if (!newDir) return;
+
+            const item = rawData.find(d => d.id === id);
+            if (item) {
+                item.direccion_especifica = newDir;
+                item.estado_verificacion = '🟢 Verificada / Específica';
+
+                // Save to localStorage
+                let savedEdits = localStorage.getItem('accidentes_user_edits');
+                let editsMap = savedEdits ? JSON.parse(savedEdits) : {};
+                editsMap[id] = { id: id, direccion: newDir, timestamp: new Date().toISOString() };
+                localStorage.setItem('accidentes_user_edits', JSON.stringify(editsMap));
+
+                updateStats();
+                renderTable();
+                alert(`✔ Dirección actualizada correctamente para el Registro #${id}`);
+            }
+        }
+
+        function exportData(format) {
+            if (format === 'json') {
+                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(rawData, null, 2));
+                const downloadAnchor = document.createElement('a');
+                downloadAnchor.setAttribute("href", dataStr);
+                downloadAnchor.setAttribute("download", "accidentes_verificados_actualizados.json");
+                document.body.appendChild(downloadAnchor);
+                downloadAnchor.click();
+                downloadAnchor.remove();
+            } else if (format === 'csv') {
+                if (rawData.length === 0) return;
+                const headers = Object.keys(rawData[0]).join(",");
+                const rows = rawData.map(row => {
+                    return Object.values(row).map(val => {
+                        let str = strVal = String(val || '').replace(/"/g, '""');
+                        return `"${str}"`;
+                    }).join(",");
+                }).join("\n");
+
+                const csvContent = "\uFEFF" + headers + "\n" + rows;
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.setAttribute('href', url);
+                link.setAttribute('download', 'accidentes_verificados_actualizados.csv');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+flowchart TD
+    classDef capa fill:#f8f9fa,stroke:#495057,stroke-width:2px,font-weight:bold;
+    classDef entrada fill:#e1f5fe,stroke:#0288d1,stroke-width:1.5px;
+    classDef proceso fill:#e8f5e9,stroke:#388e3c,stroke-width:1.5px;
+    classDef interfaz fill:#fff3e0,stroke:#f57c00,stroke-width:1.5px;
+    classDef kpi fill:#ede7f6,stroke:#512da8,stroke-width:1.5px;
+
+    subgraph CapaEntrada ["Capa 1: Datos Empíricos de Entrada"]
+        direction TB
+        E1["<b>Vector de Siniestralidad Vial</b><br/>Dataset CSV: 338 siniestros georreferenciados<br/>(Coordenadas lat/lon y severidad)"]:::entrada
+        E2["<b>Red Vial y Matriz O-D T_ij</b><br/>OSMnx / GIS con factores de congestión<br/>(1.0 valle / 1.6 hora pico)"]:::entrada
+        E3["<b>Demanda Estocástica</b><br/>Ajuste con procesos de Poisson no homogéneos"]:::entrada
+    end
+
+    subgraph CapaProcesamiento ["Capa 2: Motor de Optimización y Simulación"]
+        direction TB
+        P1["<b>Solver MILP Localización-Asignación</b><br/>Módulo SciPy / PuLP<br/>(Ubicación óptima de bases y flota p)"]:::proceso
+        P2["<b>Motor de Simulación de Eventos Discretos</b><br/>Entorno SimPy para APH<br/>(Tráfico, colas y despachos dinámicos)"]:::proceso
+        P3["<b>Agente Analítico Operativo</b><br/>Gemini API<br/>(Procesamiento de logs y consultas en lenguaje natural)"]:::proceso
+    end
+
+    subgraph CapaInterfaz ["Capa 3: Capa de Presentación e Interacción"]
+        direction TB
+        I1["<b>Dashboard Interactivo</b><br/>Streamlit / Gradio<br/>(Operador del centro regulador)"]:::interfaz
+        I2["<b>Visualización Geográfica</b><br/>Mapas de calor de puntos calientes<br/>y tiempos en vivo"]:::interfaz
+    end
+
+    subgraph CapaSalida ["Capa 4: Indicadores de Salida (KPIs)"]
+        direction TB
+        K1["<b>Métricas de Rendimiento Operativo</b><br/>• Tiempo medio de respuesta (T_resp)<br/>• Tasa de utilización de ambulancias (&rho;_k)<br/>• Cobertura efectiva (t &le; T_max)<br/>• Tiempo medio de espera en cola"]:::kpi
+    end
+
+    %% Conexiones y flujos de datos
+    E1 -->|Coordenadas y severidad de demanda| P1
+    E2 -->|Tiempos de viaje T_ij| P1
+    E3 -->|Tasa de llamadas estocásticas| P2
+    
+    P1 -->|Configuración óptima de bases y asignación| P2
+    P2 -->|Logs de eventos y estados de flota| P3
+    P2 -->|Resultados de simulación operativa| I1
+    P3 -->|Recomendaciones explicables de despacho| I1
+    
+    I1 -->|Despliegue geoespacial| I2
+    I1 -->|Cálculo y monitoreo| K1
+
+    class CapaEntrada,CapaProcesamiento,CapaInterfaz,CapaSalida capa;

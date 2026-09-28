@@ -1,0 +1,25 @@
+graph TD
+    classDef main fill:#ffcc99,stroke:#333,stroke-width:2px;
+    classDef sol fill:#ffffcc,stroke:#333;
+    classDef sub fill:#ffffff,stroke:#333,stroke-dasharray: 5 5;
+
+    %% Solución Principal
+    S{Implementación de Gemelo Digital y Modelo MILP<br/>para Localización-Asignación y Reubicación}:::main
+    
+    %% Soluciones Principales (Directas de los Objetivos)
+    S --> S1[Desarrollar modelo de Programación Lineal Entera Mixta MILP]:::sol
+    S --> S2[Implementar entorno de simulación de eventos discretos SimPy]:::sol
+    S --> S3[Caracterización espacio-temporal y georreferenciación GIS]:::sol
+    S --> S4[Integrar Agente Gemini API para asistencia analítica]:::sol
+    
+    %% Soluciones Complementarias
+    S1 --> S1a[Formular funciones de costo y penalizaciones por tiempo de viaje]:::sub
+    S1 --> S1b[Incluir restricciones operativas de flota y capacidad de bases]:::sub
+    
+    S2 --> S2a[Ajustar demanda con procesos de Poisson no homogéneos]:::sub
+    S2 --> S2b[Simular patrones dinámicos de congestión horaria]:::sub
+    
+    S3 --> S3a[Identificar y mapear puntos calientes de siniestralidad]:::sub
+    S3 --> S3b[Generar matrices Origen-Destino con OSMnx]:::sub
+    
+    S4 --> S4a[Desarrollar Dashboard interactivo Streamlit/Gradio]:::sub
