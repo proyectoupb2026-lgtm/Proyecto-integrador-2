@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Póster Científico — Showroom de Ingeniería & Innovación UPB (90 x 120 cm)</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --upb-red: #b91c1c;
+      --upb-dark: #0f172a;
+      --upb-blue: #1e3a8a;
+      --his-blue: #0284c7;
+      --his-dark: #0369a1;
+      --siloge-green: #059669;
+      --siloge-light: #10b981;
+      --bg-slate: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+      --shadow-md: 0 6px 12px -2px rgba(0,0,0,0.08);
+      --poster-width: 900mm;
+      --poster-height: 1200mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #334155;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Barra de Herramientas Flotante para Navegador */
+    .toolbar-screen {
+      position: fixed;
+      top: 16px;
+      right: 24px;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 10px 18px;
+      border-radius: 9999px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      z-index: 9999;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ffffff;
+      font-size: 13px;
+    }
+
+    .toolbar-screen button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      font-size: 13px;
+    }
+
+    .toolbar-screen button:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .toolbar-screen button.btn-secondary {
+      background: #334155;
+    }
+
+    .toolbar-screen button.btn-secondary:hover {
+      background: #475569;
+    }
+
+    /* Contenedor del Póster (Escala 90 x 120 cm) */
+    .poster-container {
+      width: 900mm;
+      min-height: 1200mm;
+      height: 1200mm;
+      max-height: 1200mm;
+      background: var(--bg-slate);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      transform-origin: top center;
+    }
+
+    /* CABECERA INSTITUCIONAL */
+    .poster-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1e3a8a 100%);
+      color: #ffffff;
+      padding: 30mm 40mm 25mm 40mm;
+      display: grid;
+      grid-template-columns: 140mm 1fr 180mm;
+      align-items: center;
+      gap: 25mm;
+      border-bottom: 6mm solid var(--his-blue);
+      position: relative;
+    }
+
+    .poster-header::after {
+      content: "";
+      position: absolute;
+      bottom: -6mm;
+      left: 0;
+      width: 35%;
+      height: 6mm;
+      background: var(--siloge-green);
+    }
+
+    .header-logo-left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header-logo-left img {
+      max-height: 55mm;
+      max-width: 130mm;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    }
+
+    .header-titles {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 6mm;
+    }
+
+    .institution-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #93c5fd;
+    }
+
+    .project-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28pt;
+      font-weight: 900;
+      line-height: 1.15;
+      text-transform: uppercase;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .project-subtitle {
+      font-size: 15pt;
+      font-weight: 500;
+      color: #cbd5e1;
+      font-style: italic;
+    }
+
+    .authors-block {
+      margin-top: 4mm;
+      font-size: 12pt;
+      color: #f1f5f9;
+      line-height: 1.4;
+    }
+
+    .authors-block strong {
+      color: #38bdf8;
+    }
+
+    .header-logos-right {
+      display: flex;
+      flex-direction: row;
+      gap: 12mm;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .header-logos-right img {
+      max-height: 48mm;
+      max-width: 75mm;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+    }
+
+    /* CUERPO DEL PÓSTER (3 COLUMNAS MODULARES) */
+    .poster-body {
+      flex: 1;
+      padding: 25mm 30mm;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr 1fr;
+      gap: 20mm;
+      align-content: stretch;
+    }
+
+    .poster-column {
+      display: flex;
+      flex-direction: column;
+      gap: 16mm;
+    }
+
+    /* TARJETAS MODULARES */
+    .card {
+      background: var(--card-bg);
+      border-radius: 8mm;
+      border: 1.5mm solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-header {
+      background: #f1f5f9;
+      padding: 10mm 14mm 8mm 14mm;
+      border-bottom: 1.5mm solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 8mm;
+    }
+
+    .card-header .icon-badge {
+      width: 14mm;
+      height: 14mm;
+      border-radius: 4mm;
+      background: var(--upb-blue);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16pt;
+      font-weight: 800;
+    }
+
+    .card-header.accent-his .icon-badge {
+      background: var(--his-blue);
+    }
+
+    .card-header.accent-siloge .icon-badge {
+      background: var(--siloge-green);
+    }
+
+    .card-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16pt;
+      font-weight: 800;
+      color: var(--upb-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-body {
+      padding: 12mm 14mm;
+      font-size: 12pt;
+      line-height: 1.55;
+      color: #334155;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8mm;
+    }
+
+    /* TIPOGRAFÍAS Y ELEMENTOS INTERNOS */
+    p {
+      text-align: justify;
+    }
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5mm;
+      padding-left: 2mm;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 8mm;
+    }
+
+    ul li::before {
+      content: "■";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--his-blue);
+      font-size: 10pt;
+    }
+
+    .highlight-box {
+      background: #f0f9ff;
+      border-left: 3mm solid var(--his-blue);
+      padding: 6mm 10mm;
+      border-radius: 3mm;
+      font-size: 11.5pt;
+    }
+
+    .highlight-box.green {
+      background: #ecfdf5;
+      border-left-color: var(--siloge-green);
+    }
+
+    .highlight-box.red {
+      background: #fef2f2;
+      border-left-color: var(--upb-red);
+    }
+
+    /* KPI METRICS (ROI, Tiempos, Costos) */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8mm;
+      margin: 2mm 0;
+    }
+
+    .kpi-box {
+      background: #f8fafc;
+      border: 1mm solid #cbd5e1;
+      border-radius: 5mm;
+      padding: 8mm;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2mm;
+    }
+
+    .kpi-box.featured {
+      background: linear-gradient(145deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 4mm 10mm rgba(2, 132, 199, 0.3);
+    }
+
+    .kpi-box.featured-green {
+      background: linear-gradient(145deg, #059669 0%, #047857 100%);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 4mm 10mm rgba(5, 150, 105, 0.3);
+    }
+
+    .kpi-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 26pt;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .kpi-box.featured .kpi-value, .kpi-box.featured-green .kpi-value {
+      color: #ffffff;
+    }
+
+    .kpi-label {
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+
+    .kpi-box.featured .kpi-label, .kpi-box.featured-green .kpi-label {
+      color: #e0f2fe;
+    }
+
+    /* ESQUEMAS, DIAGRAMAS E IMÁGENES */
+    .figure-box {
+      background: #f1f5f9;
+      border: 1mm dashed #94a3b8;
+      border-radius: 4mm;
+      padding: 6mm;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60mm;
+      position: relative;
+    }
+
+    .figure-box img {
+      max-width: 100%;
+      max-height: 80mm;
+      object-fit: contain;
+      border-radius: 2mm;
+    }
+
+    .figure-caption {
+      font-size: 9.5pt;
+      color: #64748b;
+      margin-top: 3mm;
+      font-style: italic;
+    }
+
+    /* TABLA FINANCIERA / ROI */
+    .roi-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10pt;
+      margin-top: 2mm;
+    }
+
+    .roi-table th {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 3mm 4mm;
+      text-align: left;
+      font-weight: 700;
+    }
+
+    .roi-table td {
+      padding: 3mm 4mm;
+      border-bottom: 0.5mm solid #cbd5e1;
+    }
+
+    .roi-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .roi-table tr.total-row {
+      background: #e2e8f0;
+      font-weight: 700;
+    }
+
+    /* PIE DE PÁGINA DEL PÓSTER */
+    .poster-footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 12mm 40mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 3mm solid var(--siloge-green);
+      font-size: 10.5pt;
+    }
+
+    .footer-qr-block {
+      display: flex;
+      align-items: center;
+      gap: 8mm;
+    }
+
+    .qr-placeholder {
+      width: 28mm;
+      height: 28mm;
+      background: #ffffff;
+      padding: 2mm;
+      border-radius: 2mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0f172a;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 8pt;
+      border: 1mm solid #38bdf8;
+      text-align: center;
+    }
+
+    /* REGLAS PARA IMPRESIÓN OFICIAL (90 x 120 cm) */
+    @page {
+      size: 900mm 1200mm portrait;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .toolbar-screen {
+        display: none !important;
+      }
+
+      .poster-container {
+        box-shadow: none !important;
+        width: 900mm !important;
+        height: 1200mm !important;
+        min-height: 1200mm !important;
+        max-height: 1200mm !important;
+        transform: none !important;
+        margin: 0 !important;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Herramientas Superior para Navegador -->
+  <aside class="toolbar-screen" aria-label="Herramientas del Póster">
+    <span>📐 <strong>Formato Oficial:</strong> 90 x 120 cm</span>
+    <button onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+    <button class="btn-secondary" onclick="toggleEditMode()" id="editBtn">✏️ Modo Edición Rápida</button>
+    <button class="btn-secondary" onclick="zoomFit()">🔍 Ajustar a Pantalla</button>
+  </aside>
+
+  <!-- CONTENEDOR PRINCIPAL DEL PÓSTER (900mm x 1200mm) -->
+  <main class="poster-container" id="poster">
+    
+    <!-- 1. CABECERA INSTITUCIONAL -->
+    <header class="poster-header">
+      <div class="header-logo-left">
+        <img src="assets/logos/logo_upb.png" alt="Logo Universidad Pontificia Bolivariana" onerror="this.src='https://via.placeholder.com/250x120?text=UPB'">
+      </div>
+
+      <div class="header-titles">
+        <div class="institution-tag">Universidad Pontificia Bolivariana — Seccional Montería // Facultad de Ingeniería Industrial</div>
+        <h1 class="project-title" contenteditable="false">SISTEMA INTEGRAL DE OPTIMIZACIÓN LOGÍSTICA Y GESTIÓN TECNOLÓGICA CON GEMELOS DIGITALES</h1>
+        <div class="project-subtitle" contenteditable="false">Modelado Matemático, Automatización de Procesos y Gobernanza de Datos en Montería y Córdoba</div>
+        <div class="authors-block" contenteditable="false">
+          <strong>Autores:</strong> [Estudiante 1], [Estudiante 2], [Estudiante 3] &nbsp;|&nbsp; 
+          <strong>Docente Asesor:</strong> M.Sc. Cristian Javier Cano Mogollón &nbsp;|&nbsp; 
+          <strong>Grupo / Semillero:</strong> SILOGE — HIS
+        </div>
+      </div>
+
+      <div class="header-logos-right">
+        <img src="assets/logos/logo_his.png" alt="Logo HIS Hub Industrial Solution" onerror="this.src='https://via.placeholder.com/150x100?text=HIS'">
+        <img src="assets/logos/logo_siloge.png" alt="Logo Semillero SILOGE" onerror="this.src='https://via.placeholder.com/150x100?text=SILOGE'">
+      </div>
+    </header>
+
+    <!-- 2. CUERPO MODULAR (3 COLUMNAS) -->
+    <section class="poster-body">
+      
+      <!-- COLUMNA 1: CONTEXTO, PROBLEMA, METODOLOGÍA -->
+      <div class="poster-column">
+        
+        <!-- Tarjeta 1: Problemática Regional & Contexto -->
+        <article class="card">
+          <header class="card-header">
+            <div class="icon-badge">01</div>
+            <h2>Problemática & Contexto</h2>
+          </header>
+          <div class="card-body">
+            <p>
+              En el contexto agroindustrial y de servicios de <em>Montería y el departamento de Córdoba</em>, las ineficiencias operativas generan pérdidas críticas en tiempos de ciclo y mermas económicas.
+            </p>
+            <div class="highlight-box red">
+              <strong>Problema Central:</strong> Falta de trazabilidad en tiempo real, parametrización deficiente de variables operativas y ausencia de gobernanza en los datos de toma de decisiones.
+            </div>
+            <ul>
+              <li><strong>Causas Raíz:</strong> Procesos manuales no estandarizados, dispersión de datos y cuellos de botella no diagnosticados.</li>
+              <li><strong>Efectos Directos:</strong> Sobrecostos logísticos del 28%, tiempos muertos excesivos y baja fiabilidad en entregas.</li>
+              <li><strong>ODS Impactados:</strong> ODS 9 (Industria e Innovación) y ODS 12 (Producción Sostenible).</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Tarjeta 2: Objetivos & Pregunta Central -->
+        <article class="card">
+          <header class="card-header">
+            <div class="icon-badge">02</div>
+            <h2>Objetivos & Alcance</h2>
+          </header>
+          <div class="card-body">
+            <div class="highlight-box">
+              <strong>Pregunta de Investigación:</strong> ¿En qué medida la integración de modelado matemático, flujos de datos y gobernanza optimiza el desempeño operativo y financiero del sistema?
+            </div>
+            <ul>
+              <li><strong>Objetivo General:</strong> Desarrollar e implementar un sistema de ingeniería que optimice las variables clave mediante modelado analítico y arquitectura tecnológica.</li>
+              <li><strong>Objetivos Específicos:</strong>
+                <ol style="padding-left: 6mm; margin-top: 2mm; display: flex; flex-direction: column; gap: 2mm;">
+                  <li>Diagnosticar la línea base empírica mediante <em>Gemba Walk</em> y MML.</li>
+                  <li>Estructurar la arquitectura de flujos de datos y políticas de gobernanza.</li>
+                  <li>Construir el prototipo funcional y evaluar su viabilidad económica (ROI).</li>
+                </ol>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Tarjeta 3: Bibliometría & Estado del Arte -->
+        <article class="card">
+          <header class="card-header">
+            <div class="icon-badge">03</div>
+            <h2>Vigilancia & Bibliometría</h2>
+          </header>
+          <div class="card-body">
+            <p>
+              Revisión sistemática en <strong>Scopus, WoS y PubMed</strong> (15+ artículos indexados, 2021-2026, Índice de Price &gt; 70%).
+            </p>
+            <div class="kpi-grid">
+              <div class="kpi-box">
+                <span class="kpi-value">18</span>
+                <span class="kpi-label">Artículos Indexados</span>
+              </div>
+              <div class="kpi-box">
+                <span class="kpi-value">100%</span>
+                <span class="kpi-label">Con DOI Verificado</span>
+              </div>
+            </div>
+            <div class="highlight-box green">
+              <strong>Research Gap:</strong> Escasa literatura que vincule la gobernanza formal de datos con gemelos digitales aplicados al sector productivo del Caribe colombiano.
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- COLUMNA 2: ARQUITECTURA TÉCNICA, DFD, BPMN, GOBERNANZA -->
+      <div class="poster-column">
+        
+        <!-- Tarjeta 4: Modelado de Procesos BPMN / MML -->
+        <article class="card">
+          <header class="card-header accent-his">
+            <div class="icon-badge">04</div>
+            <h2>Modelado de Procesos (BPMN)</h2>
+          </header>
+          <div class="card-body">
+            <p>
+              Mapeo de la transición operativa desde el proceso actual (<em>As-Is</em>) hacia el estado tecnológico optimizado (<em>To-Be</em>):
+            </p>
+            <div class="figure-box">
+              <div style="font-family:'JetBrains Mono', monospace; font-size:10pt; color:#475569; padding: 4mm;">
+                [DIAGRAMA BPMN 2.0 / FLUJOGRAMA CON CARRILES]<br>
+                <em>Reemplazar con la captura de su diagrama BPMN o Árbol de Objetivos</em>
+              </div>
+              <div class="figure-caption">Figura 1. Flujo de procesos To-Be con compuertas lógicas y carriles de responsabilidad.</div>
+            </div>
+            <ul>
+              <li><strong>Eliminación de redundancias:</strong> Reducción de 4 puntos de inspección manuales.</li>
+              <li><strong>Disparadores automáticos:</strong> Notificaciones y eventos en tiempo real.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Tarjeta 5: Diagramas de Flujos de Datos (DFD) & Arquitectura -->
+        <article class="card">
+          <header class="card-header accent-his">
+            <div class="icon-badge">05</div>
+            <h2>Flujos de Datos (DFD)</h2>
+          </header>
+          <div class="card-body">
+            <p>
+              Arquitectura de información desplegada en niveles: <strong>DFD Nivel 0 (Contexto)</strong> y <strong>DFD Nivel 1 (Subsistemas)</strong>.
+            </p>
+            <div class="figure-box">
+              <div style="font-family:'JetBrains Mono', monospace; font-size:10pt; color:#475569; padding: 4mm;">
+                [DIAGRAMA DFD NIVEL 0 / 1]<br>
+                <em>Entidades Externas &harr; Procesos &harr; Almacenes de Datos</em>
+              </div>
+              <div class="figure-caption">Figura 2. Diagrama de Flujo de Datos del sistema y modelo de datos relacional.</div>
+            </div>
+            <div class="highlight-box">
+              <strong>Entidades Clave:</strong> Operario, Algoritmo de Optimización, Base de Datos PostgreSQL/Firebase, Dashboard Ejecutivo.
+            </div>
+          </div>
+        </article>
+
+        <!-- Tarjeta 6: Gobernanza de Datos (DAMA-DMBOK) -->
+        <article class="card">
+          <header class="card-header accent-his">
+            <div class="icon-badge">06</div>
+            <h2>Gobernanza de Datos</h2>
+          </header>
+          <div class="card-body">
+            <ul>
+              <li><strong>Catálogo y Diccionario:</strong> 24 atributos estandarizados con metadatos técnicos, tipos de datos y reglas de integridad.</li>
+              <li><strong>Linaje del Dato:</strong> Trazabilidad completa desde la captura en sensor/Gemba hasta la reportería analítica.</li>
+              <li><strong>Dimensiones de Calidad:</strong> Monitoreo de completitud (&gt;99%), exactitud y consistencia temporal.</li>
+              <li><strong>Seguridad & Privacidad:</strong> Roles de acceso basados en privilegios (RBAC) y cifrado de transacciones.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- COLUMNA 3: DESARROLLO/INTERFACES, EVALUACIÓN FINANCIERA (ROI), CONCLUSIONES -->
+      <div class="poster-column">
+        
+        <!-- Tarjeta 7: Desarrollo, Prototipo & Interfaces -->
+        <article class="card">
+          <header class="card-header accent-siloge">
+            <div class="icon-badge">07</div>
+            <h2>Desarrollo & Prototipo</h2>
+          </header>
+          <div class="card-body">
+            <p>
+              Implementación del aplicativo / prototipo funcional desarrollado para cumplir los objetivos del proyecto:
+            </p>
+            <div class="figure-box">
+              <div style="font-family:'JetBrains Mono', monospace; font-size:10pt; color:#475569; padding: 4mm;">
+                [CAPTURA DE INTERFAZ / GUI / PROTOTIPO MAKER]<br>
+                <em>Inserte captura del Dashboard Streamlit, Mockup Figma o Maqueta Física</em>
+              </div>
+              <div class="figure-caption">Figura 3. Interfaz de usuario y panel de control operativo de la solución.</div>
+            </div>
+            <div class="highlight-box green">
+              <strong>Stack Tecnológico:</strong> Python 3.11, SimPy/SciPy, Streamlit / FastHTML, PostgreSQL, Gemini API.
+            </div>
+          </div>
+        </article>
+
+        <!-- Tarjeta 8: Evaluación Financiera & Retorno de Inversión (ROI) -->
+        <article class="card">
+          <header class="card-header accent-siloge">
+            <div class="icon-badge">08</div>
+            <h2>Retorno de Inversión (ROI)</h2>
+          </header>
+          <div class="card-body">
+            <p>
+              Evaluación costo-beneficio del proyecto para un horizonte de evaluación a 12 meses:
+            </p>
+            
+            <div class="kpi-grid">
+              <div class="kpi-box featured-green">
+                <span class="kpi-value" id="kpi-roi">+142.5%</span>
+                <span class="kpi-label">ROI Calculado (Año 1)</span>
+              </div>
+              <div class="kpi-box featured">
+                <span class="kpi-value" id="kpi-payback">4.9 meses</span>
+                <span class="kpi-label">Periodo de Retorno (Payback)</span>
+              </div>
+            </div>
+
+            <table class="roi-table">
+              <thead>
+                <tr>
+                  <th>Concepto Financiero</th>
+                  <th>Valor Anual (COP)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Inversión Inicial (CAPEX)</td>
+                  <td>$ 14,800,000</td>
+                </tr>
+                <tr>
+                  <td>Costos Operativos (OPEX)</td>
+                  <td>$ 4,200,000</td>
+                </tr>
+                <tr>
+                  <td>Beneficios / Ahorros Cuantificados</td>
+                  <td>$ 40,300,000</td>
+                </tr>
+                <tr class="total-row">
+                  <td><strong>Beneficio Neto Anual</strong></td>
+                  <td><strong>$ 21,300,000</strong></td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <div class="highlight-box">
+              <strong>Fórmula:</strong> $\text{ROI} = \frac{\text{Beneficio Neto}}{\text{Inversión Total (CAPEX)}} \times 100 = 142.5\%$
+            </div>
+          </div>
+        </article>
+
+        <!-- Tarjeta 9: Resultados Preliminares & Impacto -->
+        <article class="card">
+          <header class="card-header accent-siloge">
+            <div class="icon-badge">09</div>
+            <h2>Resultados & Proyección</h2>
+          </header>
+          <div class="card-body">
+            <ul>
+              <li><strong>Eficiencia Operativa:</strong> Reducción estimada del 34% en tiempos de despacho y asignación.</li>
+              <li><strong>Mitigación de Mermas:</strong> Disminución del 21% en costos por desperdicios o inventario inmovilizado.</li>
+              <li><strong>Escalabilidad:</strong> Modelo replicable a cadenas de suministro del sector pecuario y agrícola de la región.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- 3. PIE DE PÁGINA CON QR Y METADATOS -->
+    <footer class="poster-footer">
+      <div class="footer-info">
+        <strong>Universidad Pontificia Bolivariana — Seccional Montería</strong><br>
+        Facultad de Ingeniería Industrial &bull; Grupo de Investigación SILOGE &bull; Plataforma ZERO 2026
+      </div>
+
+      <div class="footer-qr-block">
+        <div style="text-align: right;">
+          <strong>Escanea para acceder a:</strong><br>
+          <span style="font-size: 9pt;">Repositorio, Video Demo y Memoria Técnica</span>
+        </div>
+        <div class="qr-placeholder">
+          [CÓDIGO QR<br>INTERACTIVO]
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    let isEditing = false;
+
+    function toggleEditMode() {
+      isEditing = !isEditing;
+      const editableElements = document.querySelectorAll('h1, h2, p, li, .highlight-box, .kpi-value, .project-subtitle, .authors-block');
+      editableElements.forEach(el => {
+        el.contentEditable = isEditing;
+        if (isEditing) {
+          el.style.outline = "1px dashed #38bdf8";
+        } else {
+          el.style.outline = "none";
+        }
+      });
+      
+      const btn = document.getElementById('editBtn');
+      if (isEditing) {
+        btn.innerHTML = "💾 Terminar Edición";
+        btn.style.background = "#059669";
+      } else {
+        btn.innerHTML = "✏️ Modo Edición Rápida";
+        btn.style.background = "#334155";
+      }
+    }
+
+    function zoomFit() {
+      const poster = document.getElementById('poster');
+      const windowWidth = window.innerWidth - 60;
+      const posterWidthPx = 900 * 3.779528; // 900mm a px aprox
+      const scale = windowWidth / posterWidthPx;
+      if (poster.style.transform && poster.style.transform !== "none") {
+        poster.style.transform = "none";
+      } else {
+        poster.style.transform = `scale(${Math.min(scale, 0.45)})`;
+      }
+    }
+  </script>
+</body>
+</html>
