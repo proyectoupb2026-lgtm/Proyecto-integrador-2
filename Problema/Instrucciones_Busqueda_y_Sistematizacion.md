@@ -1,4 +1,4 @@
-# Guía Metodológica: Búsqueda Sistemática, Ecuaciones Booleanas y Sistematización de la Información
+C:\Users\pc\OneDrive\Desktop\Proyecto integrador 2\web_scraping\accidentes_extraidos.csv# Guía Metodológica: Búsqueda Sistemática, Ecuaciones Booleanas y Sistematización de la Información
 
 > **Proyecto:** Optimización y Gestión Inteligente del Tiempo de Respuesta en Atención Prehospitalaria de Urgencias en la Ciudad de Montería mediante Programación Lineal Entera y Aprendizaje por Refuerzo.  
 > **Documento de Referencia Base:** [Problema.md](file:///c:/Users/pc/OneDrive/Desktop/Proyecto%20integrador%202/Problema/Problema.md)
@@ -20,7 +20,7 @@ Para garantizar una cobertura integral de la literatura científica, las búsque
 | **Eje 1: Logística de Emergencias y Ambulancias** | Atención prehospitalaria, servicio médico de urgencias, tiempo de respuesta, enrutamiento de ambulancias, despacho de ambulancias. | Emergency Medical Services (EMS), Prehospital care, Ambulance location, Ambulance relocation, Response time, Dynamic dispatching. |
 | **Eje 2: Optimización Matemática (Estática)** | Programación lineal entera, programación lineal entera mixta, problema de localización de instalaciones, localización-asignación. | Integer Linear Programming (ILP), Mixed-Integer Linear Programming (MILP), Facility Location Problem (FLP), Location-Allocation models, Maximum Availability Location Problem (MALP). |
 | **Eje 3: Inteligencia Artificial y Control Dinámico** | Aprendizaje por refuerzo, aprendizaje por refuerzo profundo, Q-learning, reubicación preventiva, adaptativo a tráfico en tiempo real. | Reinforcement Learning (RL), Deep Reinforcement Learning (DRL), Q-Learning, Markov Decision Process (MDP), Real-time traffic adaptation, Predictive relocation. |
-| **Eje 4: Simulación y Entorno Urbano** | Simulación urbana, demanda estocástica, variaciones de tráfico, evaluación de desempleo operativo. | Urban simulation, Stochastic demand, Traffic congestion, SUMO simulation, Agent-based simulation. |
+| **Eje 4: Simulación y Entorno Urbano** | Simulación urbana, demanda estocástica, variaciones de tráfico, evaluación de desempeño operativo. | Urban simulation, Stochastic demand, Traffic congestion, SUMO simulation, Agent-based simulation. |
 
 ---
 
@@ -99,6 +99,19 @@ Si necesitas completar 200 documentos de alta especificidad, utiliza estas sub-c
    `TITLE-ABS-KEY ( "ambulance" AND ( "maximal coverage location problem" OR "MCLP" OR "MALP" ) )`
 
 ---
+
+#### B. WEB OF SCIENCE (WoS - Clarivate)
+*Sintaxis por Tema (`TS`).*
+
+```boolean
+TS=(( "ambulance" OR "emergency medical services" OR "EMS" ) 
+AND ( "integer programming" OR "MILP" OR "facility location" ) 
+AND ( "reinforcement learning" OR "deep reinforcement learning" OR "Q-learning" ) 
+AND ( "response time" OR "relocation" OR "dispatch" ))
+```
+
+#### C. IEEE Xplore
+*Orientada a ingeniería, algoritmos, simulación de tráfico y sistemas inteligentes.*
 
 ```boolean
 (("Document Title":ambulance OR "Abstract":ambulance OR "Document Title":EMS OR "Abstract":EMS) 

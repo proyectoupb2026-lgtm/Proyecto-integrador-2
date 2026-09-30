@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_981446b48009c6eba1f968e950a11c7b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_981446b48009c6eba1f968e950a11c7b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_981446b48009c6eba1f968e950a11c7b = L.map(
+                "map_981446b48009c6eba1f968e950a11c7b",
+                {
+                    center: [8.7508, -75.8814],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7b70e5a9ef0bbb8c8bd977c4772d8060 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7b70e5a9ef0bbb8c8bd977c4772d8060.addTo(map_981446b48009c6eba1f968e950a11c7b);
+        
+    
+            var feature_group_155a15a4a853a7984ac2931f7284cdf7 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var heat_map_1ed314c258eaf8b6f0cb1a05da34ec4c = L.heatLayer(
+                [[8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.8844, -75.7908], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.1722, -76.0594], [8.7508, -75.8814], [8.7508, -75.8814], [8.8786, -75.6231], [8.7508, -75.8814], [8.7508, -75.8814], [9.3736, -75.7592], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [7.9786, -75.4189], [8.7952, -75.8621], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.751, -75.885], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7925, -75.8612], [8.7508, -75.8814], [8.815, -75.835], [8.7508, -75.8814], [8.729, -75.875], [8.7508, -75.8814], [8.7508, -75.8814], [8.7925, -75.8612], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [9.2458, -76.1322], [8.7508, -75.8814], [8.7508, -75.8814], [9.1067, -75.4011], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.8844, -75.7908], [8.8844, -75.7908], [8.7508, -75.8814], [8.8844, -75.7908], [8.7508, -75.8814], [8.4076, -75.5837], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.8844, -75.7908], [8.7508, -75.8814], [8.7508, -75.8814], [8.762, -75.842], [8.8844, -75.7908], [8.784, -75.857], [7.9786, -75.4189], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [7.9786, -75.4189], [8.7508, -75.8814], [8.7508, -75.8814], [8.8844, -75.7908], [8.8844, -75.7908], [8.7508, -75.8814], [8.8844, -75.7908], [8.7508, -75.8814], [8.8844, -75.7908], [8.7508, -75.8814], [8.8844, -75.7908], [8.7508, -75.8814], [8.8844, -75.7908], [8.768, -75.865], [8.8844, -75.7908], [8.8844, -75.7908], [8.7508, -75.8814], [8.7508, -75.8814], [8.8844, -75.7908], [8.8844, -75.7908], [8.8844, -75.7908], [8.841, -75.801], [8.7508, -75.8814], [8.8844, -75.7908], [8.631, -75.951], [8.8844, -75.7908], [8.8844, -75.7908], [8.7508, -75.8814], [8.7508, -75.8814], [8.755, -75.875], [8.7508, -75.8814], [8.7508, -75.8814], [8.755, -75.875], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [9.3736, -75.7592], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [9.2392, -75.8136], [8.7508, -75.8814], [8.7508, -75.8814], [9.1067, -75.4011], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.8844, -75.7908], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.9461, -75.4431], [7.9786, -75.4189], [9.1067, -75.4011], [7.9786, -75.4189], [8.7508, -75.8814], [8.9461, -75.4431], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.8786, -75.6231], [9.2392, -75.8136], [8.762, -75.842], [8.7508, -75.8814], [8.729, -75.875], [8.7508, -75.8814], [8.7508, -75.8814], [8.9592, -75.8369], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [7.9786, -75.4189], [8.2578, -76.1492], [8.7508, -75.8814], [8.692, -75.821], [8.7508, -75.8814], [8.7508, -75.8814], [8.761, -75.872], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [9.2458, -76.1322], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.8844, -75.7908], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.784, -75.857], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.751, -75.885], [8.751, -75.885], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814], [8.7508, -75.8814]],
+                {
+  "minOpacity": 0.5,
+  "maxZoom": 18,
+  "radius": 15,
+  "blur": 20,
+}
+            );
+        
+    
+            heat_map_1ed314c258eaf8b6f0cb1a05da34ec4c.addTo(feature_group_155a15a4a853a7984ac2931f7284cdf7);
+        
+    
+            feature_group_155a15a4a853a7984ac2931f7284cdf7.addTo(map_981446b48009c6eba1f968e950a11c7b);
+        
+    
+            var feature_group_c66aee18a25f1fa65e2fa686bfb4c105 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_1bbce200c2c324250ecba33805567ad3 = L.marker(
+                [8.7554, -75.8805],
+                {
+}
+            ).addTo(feature_group_c66aee18a25f1fa65e2fa686bfb4c105);
+        
+    
+            var icon_19621eb22d9c001df00b4f408d13377e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e6a86087d32f9b3d89329e5fca4d9db8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ff7c40ababa0c564056e83961b814e3e = $(`<div id="html_ff7c40ababa0c564056e83961b814e3e" style="width: 100.0%; height: 100.0%;"><b>Hospital San Jerónimo</b><br>Base Principal</div>`)[0];
+                popup_e6a86087d32f9b3d89329e5fca4d9db8.setContent(html_ff7c40ababa0c564056e83961b814e3e);
+            
+        
+
+        marker_1bbce200c2c324250ecba33805567ad3.bindPopup(popup_e6a86087d32f9b3d89329e5fca4d9db8)
+        ;
+
+        
+    
+    
+                marker_1bbce200c2c324250ecba33805567ad3.setIcon(icon_19621eb22d9c001df00b4f408d13377e);
+            
+    
+            var marker_3ec107e1bea61be68b6ebd96922a2c30 = L.marker(
+                [8.7612, -75.8833],
+                {
+}
+            ).addTo(feature_group_c66aee18a25f1fa65e2fa686bfb4c105);
+        
+    
+            var icon_535fd711126d666c627ce9805c395f5b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fed1f72aaaf88e9ce0fe7f7810e65ff4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0c3a76f3d900709c878ad47cefad9929 = $(`<div id="html_0c3a76f3d900709c878ad47cefad9929" style="width: 100.0%; height: 100.0%;"><b>Clínica Montería</b><br>Base Principal</div>`)[0];
+                popup_fed1f72aaaf88e9ce0fe7f7810e65ff4.setContent(html_0c3a76f3d900709c878ad47cefad9929);
+            
+        
+
+        marker_3ec107e1bea61be68b6ebd96922a2c30.bindPopup(popup_fed1f72aaaf88e9ce0fe7f7810e65ff4)
+        ;
+
+        
+    
+    
+                marker_3ec107e1bea61be68b6ebd96922a2c30.setIcon(icon_535fd711126d666c627ce9805c395f5b);
+            
+    
+            var marker_8f883b4abf5d2b62c63c1c1033e466b4 = L.marker(
+                [8.7681, -75.8752],
+                {
+}
+            ).addTo(feature_group_c66aee18a25f1fa65e2fa686bfb4c105);
+        
+    
+            var icon_a0246da9506f51e44163e9da0f05e34c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bcc64128efb5b76f823b99ac3ff87710 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d7050536eef23fb778f78feb14b7a391 = $(`<div id="html_d7050536eef23fb778f78feb14b7a391" style="width: 100.0%; height: 100.0%;"><b>Clínica Zue</b><br>Base Principal</div>`)[0];
+                popup_bcc64128efb5b76f823b99ac3ff87710.setContent(html_d7050536eef23fb778f78feb14b7a391);
+            
+        
+
+        marker_8f883b4abf5d2b62c63c1c1033e466b4.bindPopup(popup_bcc64128efb5b76f823b99ac3ff87710)
+        ;
+
+        
+    
+    
+                marker_8f883b4abf5d2b62c63c1c1033e466b4.setIcon(icon_a0246da9506f51e44163e9da0f05e34c);
+            
+    
+            var marker_9651a4c8cc8f732543702d05b8684dc6 = L.marker(
+                [8.7495, -75.8911],
+                {
+}
+            ).addTo(feature_group_c66aee18a25f1fa65e2fa686bfb4c105);
+        
+    
+            var icon_c4c39463209382fddca5c71363850e31 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_45ac1bb769e5bea323cbdb26b8f979ca = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e1c19c7230862cc03eb12fabc14a11cd = $(`<div id="html_e1c19c7230862cc03eb12fabc14a11cd" style="width: 100.0%; height: 100.0%;"><b>Hospital de la Margen Izquierda</b><br>Base Principal</div>`)[0];
+                popup_45ac1bb769e5bea323cbdb26b8f979ca.setContent(html_e1c19c7230862cc03eb12fabc14a11cd);
+            
+        
+
+        marker_9651a4c8cc8f732543702d05b8684dc6.bindPopup(popup_45ac1bb769e5bea323cbdb26b8f979ca)
+        ;
+
+        
+    
+    
+                marker_9651a4c8cc8f732543702d05b8684dc6.setIcon(icon_c4c39463209382fddca5c71363850e31);
+            
+    
+            feature_group_c66aee18a25f1fa65e2fa686bfb4c105.addTo(map_981446b48009c6eba1f968e950a11c7b);
+        
+    
+            var feature_group_2197e2f631f211040ac0335e2f36d0bc = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_8c7b7dfa56e0cd9e3866fe40785f462f = L.marker(
+                [8.756812539184953, -75.8743934169279],
+                {
+}
+            ).addTo(feature_group_2197e2f631f211040ac0335e2f36d0bc);
+        
+    
+            var icon_1b665f33a86160a0944e971a48c927a5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ce8f486e53b4658ee8f4bd651b98fe3f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f4670c40248fcb42bfad731e95017489 = $(`<div id="html_f4670c40248fcb42bfad731e95017489" style="width: 100.0%; height: 100.0%;"><b>Punto Estratégico 1</b><br>Sugerido por MILP</div>`)[0];
+                popup_ce8f486e53b4658ee8f4bd651b98fe3f.setContent(html_f4670c40248fcb42bfad731e95017489);
+            
+        
+
+        marker_8c7b7dfa56e0cd9e3866fe40785f462f.bindPopup(popup_ce8f486e53b4658ee8f4bd651b98fe3f)
+        ;
+
+        
+    
+    
+                marker_8c7b7dfa56e0cd9e3866fe40785f462f.setIcon(icon_1b665f33a86160a0944e971a48c927a5);
+            
+    
+            var marker_1ecd05fef0ba724d871000fddd6d1f6a = L.marker(
+                [7.9786, -75.4189],
+                {
+}
+            ).addTo(feature_group_2197e2f631f211040ac0335e2f36d0bc);
+        
+    
+            var icon_850e738a6b36e7f82e601e308fac47de = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eeb932d538a614621c66239b476d1b0f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d9f479ff6a44501c73bf15d2f36bc455 = $(`<div id="html_d9f479ff6a44501c73bf15d2f36bc455" style="width: 100.0%; height: 100.0%;"><b>Punto Estratégico 2</b><br>Sugerido por MILP</div>`)[0];
+                popup_eeb932d538a614621c66239b476d1b0f.setContent(html_d9f479ff6a44501c73bf15d2f36bc455);
+            
+        
+
+        marker_1ecd05fef0ba724d871000fddd6d1f6a.bindPopup(popup_eeb932d538a614621c66239b476d1b0f)
+        ;
+
+        
+    
+    
+                marker_1ecd05fef0ba724d871000fddd6d1f6a.setIcon(icon_850e738a6b36e7f82e601e308fac47de);
+            
+    
+            var marker_f3cd2a2df6a589f6352a940754bf3c2c = L.marker(
+                [9.2862, -75.90166666666667],
+                {
+}
+            ).addTo(feature_group_2197e2f631f211040ac0335e2f36d0bc);
+        
+    
+            var icon_b415d183779619443725ca35fa7e521a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6cc4b2c3b87264ac343aba483e5e73c2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dc0bbdae292c367f80ce8cce1a894b52 = $(`<div id="html_dc0bbdae292c367f80ce8cce1a894b52" style="width: 100.0%; height: 100.0%;"><b>Punto Estratégico 3</b><br>Sugerido por MILP</div>`)[0];
+                popup_6cc4b2c3b87264ac343aba483e5e73c2.setContent(html_dc0bbdae292c367f80ce8cce1a894b52);
+            
+        
+
+        marker_f3cd2a2df6a589f6352a940754bf3c2c.bindPopup(popup_6cc4b2c3b87264ac343aba483e5e73c2)
+        ;
+
+        
+    
+    
+                marker_f3cd2a2df6a589f6352a940754bf3c2c.setIcon(icon_b415d183779619443725ca35fa7e521a);
+            
+    
+            var marker_51ee2cdc3e9b9031599c5f40e0e5e7b1 = L.marker(
+                [8.995642857142856, -75.47652857142857],
+                {
+}
+            ).addTo(feature_group_2197e2f631f211040ac0335e2f36d0bc);
+        
+    
+            var icon_62f9b6691c70bc303c903709f7ee1dad = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9d07ad30124bb18251da480e4f0600f3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_56908c50100f26f03cae7412a70561eb = $(`<div id="html_56908c50100f26f03cae7412a70561eb" style="width: 100.0%; height: 100.0%;"><b>Punto Estratégico 4</b><br>Sugerido por MILP</div>`)[0];
+                popup_9d07ad30124bb18251da480e4f0600f3.setContent(html_56908c50100f26f03cae7412a70561eb);
+            
+        
+
+        marker_51ee2cdc3e9b9031599c5f40e0e5e7b1.bindPopup(popup_9d07ad30124bb18251da480e4f0600f3)
+        ;
+
+        
+    
+    
+                marker_51ee2cdc3e9b9031599c5f40e0e5e7b1.setIcon(icon_62f9b6691c70bc303c903709f7ee1dad);
+            
+    
+            var layer_control_45e75054e292a62fbab2036143cf8fdb_layers = {
+                base_layers : {
+                    "cartodbdarkmatter" : tile_layer_7b70e5a9ef0bbb8c8bd977c4772d8060,
+                },
+                overlays :  {
+                    "\ud83d\udd25 Zonas de Alta Accidentalidad (Heatmap)" : feature_group_155a15a4a853a7984ac2931f7284cdf7,
+                    "\ud83c\udfe5 Hospitales y Cl\u00ednicas (Bases)" : feature_group_c66aee18a25f1fa65e2fa686bfb4c105,
+                    "\ud83d\ude91 Posibles Ubicaciones Ambulancias (IA)" : feature_group_2197e2f631f211040ac0335e2f36d0bc,
+                },
+            };
+            let layer_control_45e75054e292a62fbab2036143cf8fdb = L.control.layers(
+                layer_control_45e75054e292a62fbab2036143cf8fdb_layers.base_layers,
+                layer_control_45e75054e292a62fbab2036143cf8fdb_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_981446b48009c6eba1f968e950a11c7b);
+
+        
+</script>
+</html>
