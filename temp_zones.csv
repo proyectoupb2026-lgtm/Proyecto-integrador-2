@@ -1,0 +1,13 @@
+id_zona,barrio_zona,sector_general,tipo_zona,lat,lon,num_accidentes
+ZC_6,Carrera 12,Sector Centro,zona caliente,8.755670348243829,-75.87728830324701,54
+ZC_1,Pringamosa,Sector Norte Occidente (Margen Izquierda),zona caliente,8.771692024482482,-75.8939020735449,48
+ZC_2,Carrera 3A 14A 19,Sector Centro Occidente (Margen Izquierda),zona caliente,8.748060470894742,-75.89140997498635,42
+ZC_9,Cantaclaro,Sector Centro Oriente,zona caliente,8.738662111035854,-75.8631560553982,37
+ZC_4,Carrera 24F 7 30,Sector Sur,zona caliente,8.731879887977234,-75.87914130551147,35
+ZC_11,Carrera 4,Sector Norte Oriente,zona caliente,8.770021484390947,-75.86885231913972,31
+ZC_3,230002,Sector Malibú / Vía Cereté,zona caliente,8.790888647616326,-75.85051454788837,25
+ZC_10,Calle 4 Sur 1C 28,Sector Sur Occidente (Margen Izquierda),zona caliente,8.72728149041948,-75.89700562163192,25
+ZC_5,Los Pericos,Sector Centro Oriente,zona caliente,8.753674732821349,-75.85383115207085,22
+ZC_8,Calle 9A 17 100W,Sector Centro Occidente (Margen Izquierda),zona caliente,8.75537816434151,-75.90971070091663,15
+ZC_12,Loma Grande,Sector Sur Oriente,zona caliente,8.705828887804039,-75.84355075777184,3
+ZC_7,230558,Sector Norte Oriente,punto aislado,8.841,-75.801,1
