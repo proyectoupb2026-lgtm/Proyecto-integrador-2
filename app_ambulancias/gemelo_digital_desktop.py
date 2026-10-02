@@ -25,14 +25,17 @@ from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtCore import QUrl, QThread, pyqtSignal
 
 # -----------------------------------------------------------------------
-# Rutas base del proyecto (relativas al directorio del script)
+# Rutas base del proyecto
 # -----------------------------------------------------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
 GEOJSON_VIAL = os.path.join(
-    BASE_DIR, "MAPAS_VECTORIALES_MONTERIA_OFFLINE",
+    PROJECT_ROOT, "MAPAS_VECTORIALES_MONTERIA_OFFLINE",
     "2_GeoJSON_Web_GIS", "monteria_malla_vial.geojson"
 )
-CSV_ACCIDENTES = os.path.join(BASE_DIR, "accidentes_verificados_actualizados.csv")
+CSV_ACCIDENTES = os.path.join(PROJECT_ROOT, "bade_datos_accidentes", "accidentes_verificados_actualizados.csv")
+if not os.path.exists(CSV_ACCIDENTES):
+    CSV_ACCIDENTES = os.path.join(PROJECT_ROOT, "accidentes_verificados_actualizados.csv")
 MAP_FILE = os.path.join(BASE_DIR, "temp_map.html")
 
 
