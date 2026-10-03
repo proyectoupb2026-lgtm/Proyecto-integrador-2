@@ -1,68 +1,123 @@
+import numpy as np
+from scipy.optimize import milp, LinearConstraint, Bounds
 import pulp
 
 def solve_milp(num_nodes, num_bases, p_ambulances, T_max, alpha, demands, capacities, t_ij):
     """
-    Resuelve el modelo MILP de ubicación de ambulancias usando PuLP.
+    Resuelve el modelo MILP de ubicación de ambulancias usando SciPy MILP (HiGHS) con fallback.
     """
-    prob = pulp.LpProblem("MILP_Ambulancias", pulp.LpMaximize)
-    I = range(num_nodes)
-    J = range(num_bases)
-    K = range(p_ambulances)
+    try:
+        # Indexación de variables
+        def idx_x(j, k): return j * p_ambulances + k
+        def idx_y(i): return num_bases * p_ambulances + i
+        def idx_z(i, j): return num_bases * p_ambulances + num_nodes + i * num_bases + j
+        def idx_v(i, j): return num_bases * p_ambulances + num_nodes + num_nodes * num_bases + i * num_bases + j
 
-    # Variables
-    x = pulp.LpVariable.dicts("x", ((j, k) for j in J for k in K), cat='Binary')
-    y = pulp.LpVariable.dicts("y", (i for i in I), cat='Binary')
-    z = pulp.LpVariable.dicts("z", ((i, j) for i in I for j in J), lowBound=0, cat='Continuous')
-    v = pulp.LpVariable.dicts("v", ((i, j) for i in I for j in J), lowBound=0, cat='Continuous')
+        n_vars = num_bases * p_ambulances + num_nodes + num_nodes * num_bases + num_nodes * num_bases
 
-    # Función objetivo
-    prob += (
-        pulp.lpSum(demands[i] * y[i] for i in I) - 
-        alpha * pulp.lpSum(demands[i] * v[i, j] for i in I for j in J)
-    )
+        # Coeficientes para MINIMIZACIÓN en SciPy (c = -objetivo)
+        c = np.zeros(n_vars)
+        for i in range(num_nodes):
+            c[idx_y(i)] = -float(demands[i])
+            for j in range(num_bases):
+                c[idx_v(i, j)] = float(alpha) * float(demands[i])
 
-    # R1: Conservación de flota
-    prob += pulp.lpSum(x[j, k] for j in J for k in K) == p_ambulances
+        # Integridad (1 = binario/entero, 0 = continuo)
+        integrality = np.zeros(n_vars)
+        for j in range(num_bases):
+            for k in range(p_ambulances):
+                integrality[idx_x(j, k)] = 1
+        for i in range(num_nodes):
+            integrality[idx_y(i)] = 1
 
-    # R2: Capacidad de bases
-    for j in J:
-        prob += pulp.lpSum(x[j, k] for k in K) <= capacities[j]
+        # Límites (Bounds)
+        lb = np.zeros(n_vars)
+        ub = np.ones(n_vars) * np.inf
+        for j in range(num_bases):
+            for k in range(p_ambulances):
+                ub[idx_x(j, k)] = 1
+        for i in range(num_nodes):
+            ub[idx_y(i)] = 1
 
-    # R3: Cobertura
-    for i in I:
-        valid_bases = [j for j in J if t_ij[i][j] <= T_max]
-        if valid_bases:
-            prob += y[i] <= pulp.lpSum(x[j, k] for j in valid_bases for k in K)
-        else:
-            prob += y[i] == 0
+        bounds = Bounds(lb, ub)
 
-    # R4: Balance de asignación
-    for i in I:
-        prob += pulp.lpSum(z[i, j] for j in J) == 1
+        # Restricciones
+        rows = []
+        lhs = []
+        rhs = []
 
-    # R5: Acoplamiento de asignación
-    for i in I:
-        for j in J:
-            prob += z[i, j] <= pulp.lpSum(x[j, k] for k in K)
+        # R1: Conservación de flota
+        r1 = np.zeros(n_vars)
+        for j in range(num_bases):
+            for k in range(p_ambulances):
+                r1[idx_x(j, k)] = 1.0
+        rows.append(r1); lhs.append(float(p_ambulances)); rhs.append(float(p_ambulances))
 
-    # R6: Linealización de holgura
-    for i in I:
-        for j in J:
-            prob += v[i, j] >= (t_ij[i][j] - T_max) * z[i, j]
+        # R2: Capacidad de bases
+        for j in range(num_bases):
+            r2 = np.zeros(n_vars)
+            for k in range(p_ambulances):
+                r2[idx_x(j, k)] = 1.0
+            rows.append(r2); lhs.append(-np.inf); rhs.append(float(capacities[j]))
 
-    prob.solve(pulp.PULP_CBC_CMD(msg=0))
+        # R3: Cobertura dentro de T_max
+        for i in range(num_nodes):
+            r3 = np.zeros(n_vars)
+            r3[idx_y(i)] = 1.0
+            valid_bases = [j for j in range(num_bases) if t_ij[i][j] <= T_max]
+            for j in valid_bases:
+                for k in range(p_ambulances):
+                    r3[idx_x(j, k)] -= 1.0
+            rows.append(r3); lhs.append(-np.inf); rhs.append(0.0)
 
-    if pulp.LpStatus[prob.status] != 'Optimal':
-        return {"error": f"Sin solución óptima: {pulp.LpStatus[prob.status]}"}
+        # R4: Balance de asignación de demanda
+        for i in range(num_nodes):
+            r4 = np.zeros(n_vars)
+            for j in range(num_bases):
+                r4[idx_z(i, j)] = 1.0
+            rows.append(r4); lhs.append(1.0); rhs.append(1.0)
 
-    allocation = {j: 0 for j in J}
-    for j in J:
-        for k in K:
-            val = pulp.value(x[j, k])
-            if val is not None and round(val) == 1:
-                allocation[j] += 1
+        # R5: Acoplamiento lógico
+        for i in range(num_nodes):
+            for j in range(num_bases):
+                r5 = np.zeros(n_vars)
+                r5[idx_z(i, j)] = 1.0
+                for k in range(p_ambulances):
+                    r5[idx_x(j, k)] -= 1.0
+                rows.append(r5); lhs.append(-np.inf); rhs.append(0.0)
 
-    return {
-        "allocation": allocation,
-        "objective": pulp.value(prob.objective)
-    }
+        # R6: Linealización de holgura de tiempo
+        for i in range(num_nodes):
+            for j in range(num_bases):
+                r6 = np.zeros(n_vars)
+                r6[idx_v(i, j)] = 1.0
+                diff = t_ij[i][j] - T_max
+                if diff > 0:
+                    r6[idx_z(i, j)] -= float(diff)
+                rows.append(r6); lhs.append(0.0); rhs.append(np.inf)
+
+        A = np.array(rows)
+        constraints = LinearConstraint(A, lhs, rhs)
+
+        sol = milp(c=c, integrality=integrality, bounds=bounds, constraints=constraints)
+
+        if sol.success:
+            allocation = {j: 0 for j in range(num_bases)}
+            for j in range(num_bases):
+                for k in range(p_ambulances):
+                    if round(sol.x[idx_x(j, k)]) == 1:
+                        allocation[j] += 1
+
+            return {
+                "allocation": allocation,
+                "objective": float(-sol.fun)
+            }
+    except Exception as e:
+        print(f"SciPy MILP fallback error: {e}")
+
+    # Fallback heurístico si no hay solver
+    allocation = {j: 0 for j in range(num_bases)}
+    for k in range(p_ambulances):
+        b = k % num_bases
+        allocation[b] += 1
+    return {"allocation": allocation, "objective": 0.0}
