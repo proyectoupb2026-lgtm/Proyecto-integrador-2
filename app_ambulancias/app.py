@@ -249,21 +249,8 @@ elif st.session_state.app_stage == "LIVE":
             st.session_state.app_stage = "CONFIG"
             st.rerun()
             
-    st.markdown("---")
-    
-    # --- SIMULADOR DE TIEMPO (RELOJ ANIMADO) ---
-    st.markdown("#### ⏱️ Simulador de Tiempo y Movimiento")
-    st.markdown("Desliza para avanzar el tiempo y ver las ambulancias moverse hacia las emergencias.")
-    
     if 'global_sim_time' not in st.session_state:
         st.session_state.global_sim_time = 0
-        
-    st.session_state.global_sim_time = st.slider(
-        "Minutos Transcurridos de Simulación", 
-        min_value=0, max_value=st.session_state.global_sim_time + 60, value=st.session_state.global_sim_time, step=1
-    )
-    
-    st.markdown("---")
     
     # --- MAPA PRINCIPAL ---
     st.markdown("#### Mapa de Despliegue en Tiempo Real")
