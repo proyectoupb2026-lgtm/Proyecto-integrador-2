@@ -1,0 +1,25 @@
+
+[     UTC     ] Logs for proyecto-integrador-2-v2usrul3ykqvgnzmgxrqtt.streamlit.app/
+────────────────────────────────────────────────────────────────────────────────────────
+[16:22:24] 🚀 Starting up repository: 'proyecto-integrador-2', branch: 'main', main module: 'app_ambulancias/app.py'
+[16:22:24] 🐙 Cloning repository...
+[16:22:37] 🐙 Cloning into '/mount/src/proyecto-integrador-2'...
+Updating files:  51% (150/290)Updating files:  52% (151/290)Updating files:  53% (154/290)Updating files:  54% (157/290)Updating files:  55% (160/290)Updating files:  56% (163/290)Updating files:  57% (166/290)Updating files:  58% (169/290)Updating files:  59% (172/290)Updating files:  60% (174/290)Updating files:  61% (177/290)Updating files:  62% (180/290)Updating files:  63% (183/290)Updating files:  64% (186/290)Updating files:  65% (189/290)Updating files:  66% (192/290)Updating files:  67% (195/290)Updating files:  68% (198/290)Updating files:  69% (201/290)Updating files:  70% (203/290)Updating files:  71% (206/290)Updating files:  72% (209/290)Updating files:  73% (212/290)Updating files:  74% (215/290)Updating files:  75% (218/290)Updating files:  76% (221/290)Updating files:  77% (224/290)Updating files:  78% (227/290)Updating files:  79% (230/290)Updating files:  80% (232/290)Updating files:  81% (235/290)Updating files:  82% (238/290)Updating files:  83% (241/290)Updating files:  84% (244/290)Updating files:  85% (247/290)Updating files:  86% (250/290)Updating files:  87% (253/290)Updating files:  88% (256/290)Updating files:  89% (259/290)Updating files:  90% (261/290)Updating files:  91% (264/290)Updating files:  92% (267/290)Updating files:  93% (270/290)Updating files:  94% (273/290)Updating files:  95% (276/290)Updating files:  96% (279/290)Updating files:  97% (282/290)Updating files:  98% (285/290)Updating files:  99% (288/290)Updating files: 100% (290/290)Updating files: 100% (290/290), done.
+
+[16:22:37] 🐙 Cloned repository!
+[16:22:37] 🐙 Pulling code changes from Github...
+[16:22:40] 📦 Processing dependencies...
+[16:22:40] 📦 Apt dependencies were installed from /mount/src/proyecto-integrador-2/packages.txt using apt-get.
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+Get:4 http://deb.debian.org/debian-security trixie-security/main amd64 Packages [264 kB]
+Get:5 https://packages.microsoft.com/debian/11/prod bullseye InRelease [3650 B]
+Fetched 359 kB in 0s (2342 kB/s)
+Reading package lists...[2026-10-07 16:22:42.099587] 
+Reading package lists...[2026-10-07 16:22:42.981157] 
+Building dependency tree...[2026-10-07 16:22:43.230182] 
+Reading state information...[2026-10-07 16:22:43.230487] 
+E: Unable to locate package spatialindex-util
+[16:22:43] ❗️ installer returned a non-zero exit code
+[16:22:43] ❗️ Error during processing dependencies! Please fix the error and push an update, or try restarting the app.
