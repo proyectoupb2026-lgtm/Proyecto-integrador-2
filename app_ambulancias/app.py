@@ -1,4 +1,4 @@
-# Gemelo Digital APH Montería - Streamlit App
+# APH Montería - Streamlit App
 import sys
 import os
 import streamlit as st
@@ -32,7 +32,7 @@ except ImportError:
     from app_ambulancias.utils.map_generator import create_folium_map
     from app_ambulancias.utils.route_calculator import calculate_real_road_route
 
-st.set_page_config(page_title="Gemelo Digital APH", layout="wide")
+st.set_page_config(page_title="APH Montería", layout="wide")
 
 st.markdown("""
 <style>
@@ -114,7 +114,7 @@ max_bases = len(df_cand_global) if not df_cand_global.empty else 7
 max_zonas = len(df_zonas_global) if not df_zonas_global.empty else 13
 
 # --- MAIN LAYOUT ---
-st.title("Gemelo Digital APH Montería")
+st.title("APH Montería")
 st.markdown("Plataforma interactiva para optimización, simulación y ruteo en tiempo real de emergencias médicas.")
 
 import math

@@ -287,7 +287,7 @@ def generar_mapa(allocation, num_bases, centros):
 class GemeloDigitalApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Gemelo Digital APH — Montería, Córdoba")
+        self.setWindowTitle("APH — Montería, Córdoba")
         self.setGeometry(100, 100, 1300, 820)
         self.centros = []
         self.worker = None
@@ -307,7 +307,7 @@ class GemeloDigitalApp(QMainWindow):
         left_layout = QVBoxLayout(left)
 
         # Título
-        title = QLabel("🚑 Gemelo Digital APH")
+        title = QLabel("🚑 APH Montería")
         title.setStyleSheet("font-size: 16px; font-weight: bold; color: #003366; padding: 6px;")
         left_layout.addWidget(title)
 
