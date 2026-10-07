@@ -9,3 +9,5 @@ folium
 streamlit-folium
 pulp
 simpy
+scikit-learn
+rtree
