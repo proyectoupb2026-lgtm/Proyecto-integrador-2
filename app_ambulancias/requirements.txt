@@ -11,3 +11,4 @@ pulp
 simpy
 scikit-learn
 rtree
+openpyxl
