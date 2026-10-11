@@ -820,13 +820,26 @@ body {
   overflow: hidden;
 }
 
+.hero-header,
 .hero-navbar {
-  height: 80px;
+  height: 75px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4rem;
+  padding: 0 3.5rem;
   z-index: 20;
+}
+
+.hero-bg-map {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 30%, black 100%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 30%, black 100%);
 }
 
 .hero-main {
@@ -1153,3 +1166,439 @@ body {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+@keyframes slideRight {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* ----------------------------------
+   Contenedores Adaptables Base
+   ---------------------------------- */
+.wizard-container {
+  padding: 3rem 1.5rem;
+}
+
+.results-container {
+  padding: 2.5rem;
+}
+
+.results-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.results-bases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.panel-toggle-btn {
+  position: absolute;
+  top: 1.5rem;
+  z-index: 1000;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 0.5rem 0.85rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: #0f172a;
+  transition: all 0.2s;
+}
+
+.panel-toggle-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.panel-toggle-left {
+  left: 1rem;
+  color: #2563eb;
+}
+
+.panel-toggle-right {
+  right: 1rem;
+  color: #059669;
+}
+
+.panel-backdrop {
+  display: none;
+}
+
+/* ----------------------------------
+   Diseño Responsivo (Tablets y Smartphones)
+   ---------------------------------- */
+@media (max-width: 1024px) {
+  .results-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Evitar desbordamiento horizontal */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+
+  /* STEP 0: Hero Landing */
+  .hero-header, .hero-navbar {
+    height: 60px !important;
+    padding: 0 1rem !important;
+  }
+
+  .hero-main {
+    padding: 1.5rem 1.25rem !important;
+    align-items: flex-start !important;
+  }
+
+  .hero-bg-map {
+    width: 100% !important;
+    opacity: 0.18 !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  .hero-badge-pill {
+    margin-bottom: 1.25rem !important;
+    font-size: 0.7rem !important;
+    padding: 0.4rem 0.85rem !important;
+  }
+
+  .hero-headline {
+    font-size: 2rem !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.01em !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  .hero-cta-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.85rem 1.5rem !important;
+    font-size: 1rem !important;
+  }
+
+  .hero-stats-card {
+    display: none !important;
+  }
+
+  /* App Shell Top Navigation Bar */
+  .app-topbar {
+    height: auto !important;
+    min-height: 52px !important;
+    padding: 0.5rem 0.75rem !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+
+  .app-brand {
+    gap: 0.5rem !important;
+  }
+
+  .brand-icon {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .brand-title {
+    font-size: 0.92rem !important;
+  }
+
+  .brand-sub {
+    display: none !important;
+  }
+
+  .app-tabs {
+    order: 3 !important;
+    width: 100% !important;
+    gap: 0.5rem !important;
+    justify-content: space-around !important;
+    border-top: 1px solid #f1f5f9 !important;
+    padding-top: 0.4rem !important;
+    height: auto !important;
+  }
+
+  .app-tab-btn {
+    font-size: 0.82rem !important;
+    padding: 0.3rem 0.5rem !important;
+  }
+
+  .app-status-badge {
+    font-size: 0.75rem !important;
+    margin-left: auto !important;
+  }
+
+  .app-status-text {
+    display: none !important;
+  }
+
+  /* App Subheader */
+  .app-subheader {
+    height: auto !important;
+    min-height: 40px !important;
+    padding: 0.4rem 0.75rem !important;
+    flex-wrap: wrap !important;
+    gap: 0.4rem !important;
+  }
+
+  .subheader-left {
+    gap: 0.5rem !important;
+  }
+
+  .location-tag {
+    display: none !important;
+  }
+
+  .op-status {
+    font-size: 0.75rem !important;
+  }
+
+  .subheader-right {
+    gap: 0.5rem !important;
+    margin-left: auto !important;
+  }
+
+  .clock-display {
+    font-size: 0.8rem !important;
+  }
+
+  .btn-nav-action {
+    font-size: 0.75rem !important;
+    padding: 0.3rem 0.65rem !important;
+  }
+
+  /* TAB 1: Configuración Wizard */
+  .wizard-container {
+    padding: 1.5rem 0.85rem !important;
+  }
+
+  .wizard-header {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .wizard-header h1 {
+    font-size: 1.45rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .wizard-header p.subtitle {
+    font-size: 0.875rem !important;
+  }
+
+  .wizard-card {
+    padding: 1.25rem 1rem !important;
+    border-radius: 14px !important;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+  }
+
+  .form-label-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+
+  .radio-group {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+
+  .radio-card {
+    padding: 0.85rem !important;
+  }
+
+  .btn-large {
+    margin-top: 1.25rem !important;
+    font-size: 1rem !important;
+    padding: 0.85rem !important;
+  }
+
+  /* TAB 2: Operaciones en Vivo (Mapa + Paneles en Slide Drawer) */
+  .dash-content {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .center-panel {
+    width: 100% !important;
+    height: 100% !important;
+    flex: 1 !important;
+  }
+
+  /* Fondo difuminado para cerrar panel tocando fuera */
+  .panel-backdrop {
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: rgba(15, 23, 42, 0.45) !important;
+    backdrop-filter: blur(2px) !important;
+    z-index: 1050 !important;
+    animation: fadeIn 0.2s ease !important;
+  }
+
+  /* En celular los paneles se convierten en cajones laterales que no comprimen el mapa */
+  .left-panel,
+  .right-panel {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 86% !important;
+    max-width: 340px !important;
+    z-index: 1100 !important;
+    background: #ffffff !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    padding: 1.15rem !important;
+  }
+
+  .left-panel {
+    left: 0 !important;
+    border-right: 1px solid var(--color-border) !important;
+    animation: slideRight 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .right-panel {
+    right: 0 !important;
+    border-left: 1px solid var(--color-border) !important;
+    animation: slideLeft 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  /* Botones para abrir paneles en móvil ubicados cómodamente en esquinas inferiores */
+  .panel-toggle-btn {
+    top: auto !important;
+    bottom: 4.5rem !important;
+    padding: 0.5rem 0.75rem !important;
+    border-radius: 9999px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+  }
+
+  .panel-toggle-left {
+    left: 0.75rem !important;
+  }
+
+  .panel-toggle-right {
+    right: 0.75rem !important;
+  }
+
+  .panel-toggle-label {
+    display: inline-block !important;
+    font-size: 0.78rem !important;
+  }
+
+  /* Barra superior de capas en el mapa */
+  .map-top-bar {
+    top: 0.5rem !important;
+    left: 0.5rem !important;
+    right: 0.5rem !important;
+    padding: 0.5rem 0.75rem !important;
+    gap: 0.4rem !important;
+  }
+
+  .live-indicator {
+    font-size: 0.78rem !important;
+  }
+
+  .map-toggles {
+    gap: 0.4rem !important;
+    font-size: 0.72rem !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  .toggle-label {
+    padding: 0.2rem 0.4rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* Controles de cámara flotantes abajo en el mapa */
+  .map-camera-controls {
+    bottom: 0.75rem !important;
+    left: 0.75rem !important;
+    right: 0.75rem !important;
+    gap: 0.4rem !important;
+  }
+
+  .map-camera-controls button {
+    padding: 0.4rem 0.65rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* TAB 3: Resultados */
+  .results-container {
+    padding: 1.25rem 0.85rem !important;
+  }
+
+  .results-kpi-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .results-kpi-grid > div {
+    padding: 1rem !important;
+  }
+
+  .results-bases-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Botón flotante "¿Cómo funciona?" */
+  .fab-container {
+    bottom: 1rem !important;
+    right: 1rem !important;
+  }
+
+  .fab-button {
+    width: 46px !important;
+    height: 46px !important;
+  }
+
+  /* Modal "¿Cómo funciona?" */
+  .modal-overlay {
+    padding: 0.75rem !important;
+  }
+
+  .modal-card {
+    padding: 1.25rem !important;
+    border-radius: 16px !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+
+  .modal-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    margin: 1.25rem 0 !important;
+  }
+
+  .step-card {
+    padding: 1rem !important;
+  }
+}
+

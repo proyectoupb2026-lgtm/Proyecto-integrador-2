@@ -159,7 +159,7 @@ export default function Map({
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       
       {/* Botones flotantes de control de cámara y navegación multi-ruta */}
-      <div style={{
+      <div className="map-camera-controls" style={{
         position: 'absolute',
         bottom: '1.5rem',
         left: '1.5rem',

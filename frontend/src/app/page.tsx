@@ -56,6 +56,14 @@ export default function Home() {
   const [showLeftPanel, setShowLeftPanel] = useState(true);
   const [showRightPanel, setShowRightPanel] = useState(true);
 
+  // Auto-colapsar paneles en dispositivos móviles para dar prioridad al mapa
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+      setShowLeftPanel(false);
+      setShowRightPanel(false);
+    }
+  }, []);
+
   // Fleet and Incident state
   const [fleet, setFleet] = useState<any[]>([]);
   const [incidents, setIncidents] = useState<any[]>([]);
@@ -483,17 +491,7 @@ export default function Home() {
       <div className="hero-layout" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#ffffff', position: 'relative', overflow: 'hidden' }}>
         
         {/* Mapa vectorial de fondo difuminado horizontalmente hacia la izquierda */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          width: '75%',
-          zIndex: 1,
-          pointerEvents: 'none',
-          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 30%, black 100%)',
-          maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 30%, black 100%)'
-        }}>
+        <div className="hero-bg-map">
           <svg viewBox="0 0 900 650" style={{ width: '100%', height: '100%', objectFit: 'cover' }}>
             <defs>
               <linearGradient id="curveGradient" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -553,7 +551,7 @@ export default function Home() {
         </div>
 
         {/* Top Navbar */}
-        <header style={{ height: '75px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 3.5rem', zIndex: 10 }}>
+        <header className="hero-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div style={{ background: '#0f3460', color: 'white', padding: '0.55rem', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Truck size={20} />
@@ -572,7 +570,7 @@ export default function Home() {
         </header>
 
         {/* Hero Content (Lado Izquierdo) */}
-        <main style={{ flex: 1, display: 'flex', alignItems: 'center', padding: '0 4rem', zIndex: 10 }}>
+        <main className="hero-main">
           <div style={{ maxWidth: '580px', paddingBottom: '2rem' }}>
             <div className="hero-badge-pill">
               <span className="hero-badge-dot"></span>
@@ -677,7 +675,7 @@ export default function Home() {
         {/* Estado en Línea */}
         <div className="app-status-badge">
           <span className="app-status-dot"></span>
-          Sistema en línea
+          <span className="app-status-text">Sistema en línea</span>
         </div>
       </header>
 
@@ -723,7 +721,7 @@ export default function Home() {
           VENTANA 1: Configuración de la Flota (Con fondo sutil)
           ---------------------------------------------------- */}
       {activeTab === 'configuracion' && (
-        <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '3rem 1.5rem', position: 'relative', background: '#f8fafc' }}>
+        <div className="wizard-container" style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', background: '#f8fafc' }}>
           
           {/* Fondo sutil del mapa de Montería */}
           <div style={{ position: 'absolute', inset: 0, opacity: 0.09, pointerEvents: 'none', overflow: 'hidden' }}>
@@ -876,23 +874,48 @@ export default function Home() {
       {activeTab === 'operaciones' && (
         <div className="dash-content" style={{ position: 'relative', flex: 1, display: 'flex', overflow: 'hidden' }}>
           
+          {/* Fondo difuminado al abrir panel en celular para cerrar al tocar fuera */}
+          {(showLeftPanel || showRightPanel) && (
+            <div 
+              className="panel-backdrop" 
+              onClick={() => {
+                setShowLeftPanel(false);
+                setShowRightPanel(false);
+              }}
+            />
+          )}
+
           {/* Botones flotantes para re-abrir paneles cuando están ocultos */}
           {!showLeftPanel && (
             <button 
-              onClick={() => setShowLeftPanel(true)}
-              style={{ position: 'absolute', top: '1.5rem', left: '1rem', zIndex: 1000, background: 'white', border: '1px solid var(--color-border)', borderRadius: '8px', padding: '0.5rem', cursor: 'pointer', boxShadow: 'var(--shadow-md)' }}
-              title="Mostrar Flota en Vivo"
+              onClick={() => {
+                setShowLeftPanel(true);
+                if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+                  setShowRightPanel(false);
+                }
+              }}
+              className="panel-toggle-btn panel-toggle-left"
+              title="Mostrar Flota en Vivo e Indicadores"
             >
-              <ChevronRight size={20} />
+              <Activity size={18} />
+              <span className="panel-toggle-label">Indicadores</span>
+              <ChevronRight size={18} />
             </button>
           )}
           {!showRightPanel && (
             <button 
-              onClick={() => setShowRightPanel(true)}
-              style={{ position: 'absolute', top: '1.5rem', right: '1rem', zIndex: 1000, background: 'white', border: '1px solid var(--color-border)', borderRadius: '8px', padding: '0.5rem', cursor: 'pointer', boxShadow: 'var(--shadow-md)' }}
-              title="Mostrar Despacho"
+              onClick={() => {
+                setShowRightPanel(true);
+                if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+                  setShowLeftPanel(false);
+                }
+              }}
+              className="panel-toggle-btn panel-toggle-right"
+              title="Mostrar Despacho y Emergencias"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={18} />
+              <span className="panel-toggle-label">Despacho</span>
+              <Truck size={18} />
             </button>
           )}
 
@@ -1248,7 +1271,7 @@ export default function Home() {
           VENTANA 3: Resultados y Análisis Matemático
           ---------------------------------------------------- */}
       {activeTab === 'resultados' && (
-        <div style={{ flex: 1, overflowY: 'auto', padding: '2.5rem', background: '#f8fafc' }}>
+        <div className="results-container" style={{ flex: 1, overflowY: 'auto', background: '#f8fafc' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             
             <div style={{ marginBottom: '2rem' }}>
@@ -1261,7 +1284,7 @@ export default function Home() {
             </div>
 
             {/* KPI Cards de Resultados */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.25rem', marginBottom: '2.5rem' }}>
+            <div className="results-kpi-grid">
               <div style={{ background: 'white', padding: '1.5rem', borderRadius: '14px', border: '1px solid #e2e8f0', boxShadow: 'var(--shadow-sm)' }}>
                 <div style={{ color: '#64748b', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem' }}>Cobertura Estimada</div>
                 <div style={{ fontSize: '2rem', fontWeight: 800, color: '#2563eb' }}>
@@ -1309,7 +1332,7 @@ export default function Home() {
                 <Building2 size={20} color="#2563eb" /> Distribución de Unidades por Base Estratégica (Hospitales y Puntos Tácticos en Vía Pública)
               </h2>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
+              <div className="results-bases-grid">
                 {results && results.base_names.map((baseName: string, bIdx: number) => {
                   const ambCount = results.allocation[bIdx] || 0;
                   const baseType = results.base_types ? results.base_types[bIdx] : 'Hospital/Clínica';
