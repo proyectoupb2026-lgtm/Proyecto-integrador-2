@@ -108,8 +108,19 @@ def solve_milp(num_nodes, num_bases, p_ambulances, T_max, alpha, demands, capaci
                     if round(sol.x[idx_x(j, k)]) == 1:
                         allocation[j] += 1
 
+            active_bases = [j for j, c in allocation.items() if c > 0]
+            if active_bases:
+                times = [min(t_ij[i][j] for j in active_bases) for i in range(num_nodes)]
+                coverage = (sum(1 for t in times if t <= T_max) / max(1, num_nodes)) * 100.0
+                avg_time = float(np.mean(times))
+            else:
+                coverage = 0.0
+                avg_time = float(T_max)
+
             return {
                 "allocation": allocation,
+                "coverage": round(coverage, 1),
+                "avg_time": round(avg_time, 2),
                 "objective": float(-sol.fun)
             }
     except Exception as e:
@@ -120,4 +131,15 @@ def solve_milp(num_nodes, num_bases, p_ambulances, T_max, alpha, demands, capaci
     for k in range(p_ambulances):
         b = k % num_bases
         allocation[b] += 1
-    return {"allocation": allocation, "objective": 0.0}
+
+    active_bases = [j for j, c in allocation.items() if c > 0]
+    times = [min(t_ij[i][j] for j in active_bases) for i in range(num_nodes)]
+    coverage = (sum(1 for t in times if t <= T_max) / max(1, num_nodes)) * 100.0
+    avg_time = float(np.mean(times))
+
+    return {
+        "allocation": allocation,
+        "coverage": round(coverage, 1),
+        "avg_time": round(avg_time, 2),
+        "objective": 0.0
+    }

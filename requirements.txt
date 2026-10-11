@@ -12,3 +12,6 @@ simpy
 scikit-learn
 rtree
 openpyxl
+fastapi
+uvicorn
+pydantic
